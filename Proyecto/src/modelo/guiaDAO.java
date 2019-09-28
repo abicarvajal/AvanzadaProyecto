@@ -213,26 +213,6 @@ public class guiaDAO {
     }
 
 
-        public boolean buscarGuiaFecha(guiaVO guia){
-        boolean band = false;
-        Connection acceso = con.obtenerConexion();
-        String sql="SELECT * FROM guia WHERE fecha =? ";
-        try{
-            PreparedStatement ps= acceso.prepareStatement(sql);
-            ps.setString(1, guia.getFecha());
-            ps.executeQuery();
-
-            if(ps.executeQuery().next()){
-                band=true;
-            }else{
-                band=false;
-            }
-        }catch(SQLException ex){
-            System.out.println(ex);
-        }
-        return band;
-    }
-
     public  ArrayList<guiaVO>  mostrarGuiaFecha(String aux){
         ArrayList <guiaVO> listaB=new ArrayList <guiaVO>();
         guiaVO guia;

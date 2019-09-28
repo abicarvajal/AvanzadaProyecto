@@ -323,7 +323,7 @@ numero = Float.parseFloat(floatEnCadena); // convirtiendo la cadena
         productoVO.setDescrpcion(jTextField2.getText());
         productoVO.setValorEnvio(Float.parseFloat(jTextField3.getText()));
         productoVO.setClaseProducto(jComboBox1.getSelectedItem().toString());
-//        if(productoDAO.buscarProductoNombre(productoVO)==false){
+        if(productoDAO.buscarProductoNombre(productoVO)==false){
             productoDAO.modificarProductoIdentificacion(productoVO);
 
             jTextField1.setEditable(false);
@@ -340,10 +340,10 @@ numero = Float.parseFloat(floatEnCadena); // convirtiendo la cadena
             jComboBox1.getSelectedItem();
             leer();
             
-    //    }else{
-      //                          JOptionPane.showMessageDialog(null,"Producto ya registrado");
+        }else{
+                                JOptionPane.showMessageDialog(null,"Producto ya registrado");
 
-        //}
+        }
 
 }catch(NumberFormatException e){ 
 

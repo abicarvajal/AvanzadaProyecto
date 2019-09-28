@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  *
  * @author Diego
  */
-public class Conexion {
+public class Conexion1 {
     String bd="proyecto";
     String login="root";
     String passw="";
@@ -20,7 +20,7 @@ public class Conexion {
     
     Connection objConex=null;
     
-    public Conexion (){
+    public Conexion1 (){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             objConex = DriverManager.getConnection(url,login,passw);

@@ -19,10 +19,10 @@ import javax.swing.JOptionPane;
  * @author David
  */
 public class ProvinciaDAO {
-     Conexion con;
+     Conexion1 con;
 
     public ProvinciaDAO() {
-        con=new Conexion();
+        con=new Conexion1();
     }
     public void adicionarProducto(ProvinciaVO provincia){
         Connection acceso = con.obtenerConexion();
@@ -37,25 +37,6 @@ public class ProvinciaDAO {
             System.out.println(ex);
         }
     }
-    
-        public ArrayList<ProvinciaVO> mostrarProvinciaNombre(String dni){
-        ArrayList <ProvinciaVO> listaB=new ArrayList <ProvinciaVO>();
-        ProvinciaVO producto;
-        try{
-            Connection acceso = con.obtenerConexion();
-            PreparedStatement ps= acceso.prepareStatement("select * from zona where provincia='"+dni+"'");
-            ResultSet rs=ps.executeQuery();
-            while (rs.next()){
-                producto=new ProvinciaVO();
-                listaB.add(producto);
-            }
-        }catch(SQLException ex){
-            System.out.println(ex);
-        }
-        return listaB;
-    }
-
-    
     
         public void eliminarZonaNombre(int dni){
         try {
@@ -84,7 +65,7 @@ public class ProvinciaDAO {
             PreparedStatement ps= acceso.prepareStatement("UPDATE provincia SET idprovincia='" +cli.getIdProvincia()+"', idDepartamento='"+cli.getIdDepartamento()
                     +"'WHERE provincia='"+cli.getProvincia()+"'" );
             ps.executeUpdate();
-//            JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
+            JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
         }catch(SQLException ex){
             System.out.println(ex);
         }

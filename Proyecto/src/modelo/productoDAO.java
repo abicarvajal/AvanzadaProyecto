@@ -23,33 +23,6 @@ public class productoDAO {
     public productoDAO() {
         con=new Conexion();
     }
-    
-        public ArrayList<clienteVO> mostrarCliente(){
-        ArrayList <clienteVO> listaB=new ArrayList <clienteVO>();
-        clienteVO cliente;
-        try{
-            Connection acceso = con.obtenerConexion();
-            PreparedStatement ps= acceso.prepareStatement("select * from zona ");
-            ResultSet rs=ps.executeQuery();
-            while (rs.next()){
-                cliente=new clienteVO();
-                cliente.setIdentificacion(rs.getString(1));
-                cliente.setNombre(rs.getString(2));
-                cliente.setTelefono(rs.getString(3));
-                cliente.setCorreo(rs.getString(4));
-                cliente.setCiudad(rs.getString(5));
-                cliente.setZona(rs.getString(6));
-                cliente.setCalleP(rs.getString(7));
-                cliente.setCalleS(rs.getString(8));
-                cliente.setLote(rs.getString(9));
-                listaB.add(cliente);
-            }
-        }catch(SQLException ex){
-            System.out.println(ex);
-        }
-        return listaB;
-    }
-
     public void adicionarProducto(productoVO producto){
         Connection acceso = con.obtenerConexion();
         String sql="INSERT INTO producto (codigo,descripcion,valorEnvio,claseProducto) VALUES(?,?,?,?)";

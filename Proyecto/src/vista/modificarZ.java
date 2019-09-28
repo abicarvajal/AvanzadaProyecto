@@ -33,19 +33,6 @@ public class modificarZ extends javax.swing.JFrame {
     }
 
     
-    private int numeroProvincia(){
-        ProvinciaVO ProvinciaVO=new ProvinciaVO();
-        ProvinciaDAO ProvinciaDAO=new ProvinciaDAO();
-        ArrayList <ProvinciaVO> lista = new ArrayList <ProvinciaVO>();
-           lista=ProvinciaDAO.mostrarProvinciaNombre(jTextField2.getText());
-           Object[] columna = new Object[1];
-           for (int i=0;i<lista.size();i++){
-               columna[0]=lista.get(i).getProvincia();
-           }
-           int numero=(int) columna[0];
-           return numero;
-    }
-    
     private void leer(){
         zonaVO zonaVO=new zonaVO();
         zonaDAO zonaDAO=new zonaDAO();
@@ -286,8 +273,6 @@ public class modificarZ extends javax.swing.JFrame {
         this.jTextField2.setText(jTable1.getValueAt(rec, 2).toString());
         desbloquear();
                 btnModificar.setEnabled(true);
-                 jComboBox1.setEnabled(true);
-        
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
@@ -296,7 +281,7 @@ public class modificarZ extends javax.swing.JFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        jComboBox1.setEnabled(true);
+        
         zonaDAO zonaDAO=new zonaDAO();
         zonaVO zonaVO=new zonaVO();
          zonaVO=new zonaVO(jTextField1.getText(),jTextField2.getText(),jComboBox1.getSelectedItem().toString());
@@ -304,7 +289,7 @@ public class modificarZ extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Faltan campos de llenar");
             
         }else{       
-//        if(zonaDAO.buscarZonaNombre(zonaVO)==false){
+        if(zonaDAO.buscarZonaNombre(zonaVO)==false){
                         zonaVO.setCodigo(jTextField1.getText());
                         zonaVO.setNombre(jTextField2.getText());
                         zonaVO.setCiudad(jComboBox1.getSelectedItem().toString());
@@ -324,13 +309,8 @@ public class modificarZ extends javax.swing.JFrame {
             }
             ProvinciaVO prov=new ProvinciaVO();
             ProvinciaDAO prov1=new ProvinciaDAO();
-            prov=new ProvinciaVO(0,jTextField2.getText(),0);
-            prov1.modificarNombre(prov);
-
-                        int num=prov1.contar_provincia();
-            prov=new ProvinciaVO(num,jTextField2.getText(),ciudad1);
-            prov1.adicionarProducto(prov);
-
+            prov=new ProvinciaVO(Integer.parseInt(jTextField1.getText()),jTextField2.getText(),ciudad1);
+            prov1.modificarTransportistaIdentificacion(prov);
 
                                
         jTextField1.setEditable(false);
@@ -343,10 +323,10 @@ public class modificarZ extends javax.swing.JFrame {
         jTextField2.setText("");
         leer();
             
-    //    }else{
-      //              JOptionPane.showMessageDialog(null,"Zona ya registrada");
+        }else{
+                    JOptionPane.showMessageDialog(null,"Zona ya registrada");
 
-    //}
+    }
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 

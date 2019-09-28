@@ -384,6 +384,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="calleP">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jTextField6"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -394,6 +397,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="calleS">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jTextField8"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -404,6 +410,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="lote">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jTextField7"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="ciudad">
         </Component>

@@ -18,10 +18,10 @@ import javax.swing.JComboBox;
  * @author David
  */
 public class DepartamentoDAO {
-    Conexion con;
+    Conexion1 con;
 
     public DepartamentoDAO() {
-        con=new Conexion();
+        con=new Conexion1();
     }
     public void adicionarProducto(DepartamentoVO departamento){
         Connection acceso = con.obtenerConexion();
