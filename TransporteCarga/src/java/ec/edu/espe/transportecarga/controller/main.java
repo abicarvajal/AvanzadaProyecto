@@ -8,8 +8,9 @@ package ec.edu.espe.transportecarga.controller;
 import static java.lang.Math.random;
 import static java.lang.StrictMath.random;
 import java.util.Random;
-//import ec.edu.espe.transportecarga.view.*;
-
+import ec.edu.espe.transportecarga.view.*;
+import ec.edu.espe.transportecarga.service.*;
+import java.sql.SQLException;
 /**
  *
  * @author nycha
@@ -19,12 +20,10 @@ public class main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws SQLException {    
+        login login=new  login();
+        login.setVisible(true);
         
-        
-        //login login=new  login();
-        //login.setVisible(true);
 
     }
     

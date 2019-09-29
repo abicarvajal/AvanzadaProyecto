@@ -290,6 +290,56 @@ public class guiaDAO {
             System.out.println(e);
         }   
     }
+    public  ArrayList<guiaVO>  mostrarClientePedidos(){
+        ArrayList <guiaVO> listaB=new ArrayList <guiaVO>();
+        guiaVO guia;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT *, COUNT(cedulaCliente) AS TOTAL from guia GROUP BY cedulaCliente ORDER BY TOTAL DESC");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                guia=new guiaVO();
+                guia.setNumero(rs.getInt(1));
+                guia.setFecha(rs.getString(2));
+                guia.setCedulaCliente(rs.getString(3));
+                guia.setCedulaTransportista(rs.getString(4));
+                guia.setCodigoProducto(rs.getString(5));
+                guia.setValorEnvio(rs.getString(6));
+                guia.setDestino(rs.getString(7));
+                guia.setDireccion(rs.getString(8));
+                guia.setEstadoReserva(rs.getString(9));
+                listaB.add(guia);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return listaB;
+    }
+    public  ArrayList<guiaVO>  mostrarClientePedidoMes(int mes){
+        ArrayList <guiaVO> listaB=new ArrayList <guiaVO>();
+        guiaVO guia;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT * FROM guia WHERE MONTH(fecha)='"+mes+"'");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                guia=new guiaVO();
+                guia.setNumero(rs.getInt(1));
+                guia.setFecha(rs.getString(2));
+                guia.setCedulaCliente(rs.getString(3));
+                guia.setCedulaTransportista(rs.getString(4));
+                guia.setCodigoProducto(rs.getString(5));
+                guia.setValorEnvio(rs.getString(6));
+                guia.setDestino(rs.getString(7));
+                guia.setDireccion(rs.getString(8));
+                guia.setEstadoReserva(rs.getString(9));
+                listaB.add(guia);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return listaB;
+    }
     
     
 }

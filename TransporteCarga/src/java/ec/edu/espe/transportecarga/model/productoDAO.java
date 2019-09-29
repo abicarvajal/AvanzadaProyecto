@@ -187,5 +187,25 @@ public class productoDAO {
         }
     }
     
-    
+    public ArrayList<productoVO> mostrarProductosMenoresA1(int cod){
+       ArrayList<productoVO> product=new ArrayList<productoVO>();
+       productoVO producto;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT * FROM producto WHERE producto.valorEnvio<'"+cod+"'");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                producto=new productoVO();
+                producto.setCodigo(rs.getString(1));
+                producto.setDescrpcion(rs.getString(2));
+                producto.setValorEnvio(rs.getFloat(3));
+                producto.setClaseProducto(rs.getString(4));
+                product.add(producto);
+                System.out.println(producto.toString());
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return product;
+    }
 }

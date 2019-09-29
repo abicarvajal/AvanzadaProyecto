@@ -5,7 +5,9 @@
  */
 package ec.edu.espe.transportecarga.service;
 
+import ec.edu.espe.transportecarga.model.*;
 import ec.edu.espe.transportecarga.model.clienteVO;
+import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -13,6 +15,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -36,13 +39,40 @@ public class ClientResource {
      * Retrieves representation of an instance of ec.edu.espe.transportecarga.service.ClientResource
      * @return an instance of ec.edu.espe.transportecarga.model.clienteVO
      */
+    //CLIENTES QUE SEAN DE QUITO
     @GET
+    @Path("{city}")
     @Produces(MediaType.APPLICATION_JSON)
-    public clienteVO getJson() {
+    public ArrayList<clienteVO> getJsonClientCity(@PathParam("city") String city) {
         //TODO return proper representation object
-        throw new UnsupportedOperationException();
+        clienteDAO client=new clienteDAO();
+        ArrayList<clienteVO> clientVO=new ArrayList<clienteVO>();
+        clientVO=client.mostrarClienteQuito(city);
+        return clientVO;
+    }
+    //Clientes que corresponden a un transportista X
+    @GET
+    @Path("/carriers/{carrier}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<clienteVO> getJsonClientCarrier(@PathParam("carrier")String carrier) {
+        //TODO return proper representation object
+        clienteDAO client=new clienteDAO();
+        ArrayList<clienteVO> clientVO=new ArrayList<clienteVO>();
+        clientVO=client.mostrarClienteCarrier(carrier);
+        return clientVO;
     }
 
+    /*
+    
+     @GET
+    @Path("{id}/{name}")
+    @Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+    public Student getJsonStudentById(@PathParam("id") int id, @PathParam("name") String name) {
+        //TODO return proper representation object
+        Student student=new Student(id,name,"Apellido",8.0f,22);
+        return student;
+    }
+    */
     /**
      * PUT method for updating or creating an instance of ClientResource
      * @param content representation for the resource
