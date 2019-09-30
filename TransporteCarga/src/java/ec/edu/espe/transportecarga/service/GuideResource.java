@@ -65,6 +65,29 @@ public class GuideResource {
         guiaVO=guia.mostrarClientePedidoMes(month);
         return guiaVO;
     }
+    
+    //Monto total de guias en un mes dado
+    @GET
+    @Path("/order/monto/mes/{month}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public float getJsonMontoTotalMes(@PathParam("month")int month) {
+        guiaDAO guia=new guiaDAO();
+        float total=0;
+        total=guia.montoPedidoMes(month);
+        return total;
+    }
+    
+    //Monto total de guias en un año dado
+    @GET
+    @Path("/order/monto/anio/{anio}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public float getJsonMontoTotalAnio(@PathParam("anio")int anio) {
+        guiaDAO guia=new guiaDAO();
+        float total=0;
+        total=guia.montoPedidoAnio(anio);
+        return total;
+    }
+    
     /**
      * PUT method for updating or creating an instance of GuideResource
      * @param content representation for the resource
