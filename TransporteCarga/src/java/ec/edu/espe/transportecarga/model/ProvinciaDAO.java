@@ -102,6 +102,25 @@ public class ProvinciaDAO {
         
     }
 
+    public ArrayList<ProvinciaVO> mostrarProvinciasQuito(){
+        ArrayList <ProvinciaVO> listaB=new ArrayList <ProvinciaVO>();
+        ProvinciaVO Provincia;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT p.* FROM provincia as p, departamento as d WHERE p.idDepartamento=d.iddepartamento AND d.departamento=\"Quito\"");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                Provincia=new ProvinciaVO();
+                Provincia.setIdDepartamento(rs.getInt(3));
+                Provincia.setIdProvincia(rs.getInt(1));
+                Provincia.setProvincia(rs.getString(2));
+                listaB.add(Provincia);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return listaB;
+    }
 
     
     public int contar_provincia(){

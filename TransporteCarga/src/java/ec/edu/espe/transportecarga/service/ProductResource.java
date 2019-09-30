@@ -51,6 +51,17 @@ public class ProductResource {
         return productoVO;
     }
 
+    //producto vendidos y su cantidad
+    @GET
+    @Path("/productos/vendidosCant")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<productoVO> getJson() {
+        productoDAO prod=new productoDAO();
+        ArrayList<productoVO> productoVO=new ArrayList<productoVO>();
+        productoVO=prod.mostrarProductosVendido();
+        return productoVO;
+    }
+
     /*
     public clienteVO getJsonClientCity(@PathParam("city") String city) {
         //TODO return proper representation object
