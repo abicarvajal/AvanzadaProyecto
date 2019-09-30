@@ -62,6 +62,42 @@ public class ClientResource {
         return clientVO;
     }
 
+    //clientes que han comprado mas en cantidad
+    @GET
+    @Path("/cliente/CompraMas/Cantidad")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<clienteVO> getJsonClientMasCompra() {
+        //TODO return proper representation object
+        clienteDAO client=new clienteDAO();
+        ArrayList<clienteVO> clientVO=new ArrayList<clienteVO>();
+        clientVO=client.mostrarClienteMayorValorComprado();
+        return clientVO;
+    }
+    //clientes que han comprado productos fragiles
+    @GET
+    @Path("/cliente/CompraProdFragil")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<clienteVO> getJsonClientCompraProdFragil() {
+        //TODO return proper representation object
+        clienteDAO client=new clienteDAO();
+        ArrayList<clienteVO> clientVO=new ArrayList<clienteVO>();
+        clientVO=client.mostrarClienteProductoFragil();
+        return clientVO;
+    }
+
+    //clientes que sean del valle
+    @GET
+    @Path("/clienteValle")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<clienteVO> getJsonClientValle() {
+        //TODO return proper representation object
+        clienteDAO client=new clienteDAO();
+        ArrayList<clienteVO> clientVO=new ArrayList<clienteVO>();
+        clientVO=client.mostrarClienteValle();
+        return clientVO;
+    }
+
+
     /*
     
      @GET
