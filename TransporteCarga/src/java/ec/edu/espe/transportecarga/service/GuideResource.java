@@ -66,6 +66,42 @@ public class GuideResource {
         return guiaVO;
     }
     
+   //Ciudades y cantidad de pedidos realizados de cada ciudad
+    @GET
+    @Path("/pedidos/ciudad")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<String> getJsonCiudadesPedidos() {
+       //TODO return proper representation object
+        guiaDAO guia=new guiaDAO();
+        ArrayList<String> guiaVO=new ArrayList<String>();
+        guiaVO=guia.ciudadesTotalPedidos();
+        return guiaVO;
+    }
+    
+   //Transportistas y suma de envios realizados (histórico)
+    @GET
+    @Path("/pedidos/transportistas/monto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<String> getJsonTransportistasMontoPedidos() {
+       //TODO return proper representation object
+        guiaDAO guia=new guiaDAO();
+        ArrayList<String> guiaVO=new ArrayList<String>();
+        guiaVO=guia.transportistasTotalEnvios();
+        return guiaVO;
+    }
+    
+    //Transportistas y suma de envios realizados (histórico)
+    @GET
+    @Path("/pedidos/productos/monto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<String> getJsonProductosMontoTotal() {
+       //TODO return proper representation object
+        guiaDAO guia=new guiaDAO();
+        ArrayList<String> guiaVO=new ArrayList<String>();
+        guiaVO=guia.productosMontoTotal();
+        return guiaVO;
+    }
+    
     //Monto total de guias en un mes dado
     @GET
     @Path("/order/monto/mes/{month}")

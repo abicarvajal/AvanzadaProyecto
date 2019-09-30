@@ -371,5 +371,70 @@ public class guiaDAO {
         return total;
     }
     
+    public ArrayList<String> ciudadesTotalPedidos(){
+        ArrayList <String> lista=new ArrayList <String>();
+        String ciudad;
+        int cantidad;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT nombre,count(destino) FROM ciudad, guia where destino=nombre and codigoProducto='TOTAL' and numero=numero GROUP BY destino;");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                ciudad=rs.getString(1);
+                cantidad=rs.getInt(2);
+                lista.add(ciudad);
+                lista.add(Integer.toString(cantidad));
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return lista;
+    }
+    
+    
+    public ArrayList<String> transportistasTotalEnvios(){
+        ArrayList <String> lista=new ArrayList <String>();
+        String nombre,id;
+        float cantidad;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT nombre,cedulaTransportista,sum(valorEnvio) FROM transportista, guia where cedulaTransportista=identificacion and codigoProducto='TOTAL' GROUP BY cedulaTransportista;");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                nombre=rs.getString(1);
+                id=rs.getString(2);
+                cantidad=rs.getFloat(3);
+                lista.add(nombre);
+                lista.add(id);
+                lista.add(Float.toString(cantidad));
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return lista;
+    }
+    
+    public ArrayList<String> productosMontoTotal(){
+        ArrayList <String> lista=new ArrayList <String>();
+        String nombre,id;
+        float cantidad;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT descripcion,codigoProducto,sum(p.valorEnvio) FROM producto p, guia where codigoProducto=codigo GROUP BY codigoProducto;");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                nombre=rs.getString(1);
+                id=rs.getString(2);
+                cantidad=rs.getFloat(3);
+                lista.add(nombre);
+                lista.add(id);
+                lista.add(Float.toString(cantidad));
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return lista;
+    }
+    
     
 }
