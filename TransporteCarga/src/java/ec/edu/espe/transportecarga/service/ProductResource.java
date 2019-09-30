@@ -52,9 +52,9 @@ public class ProductResource {
     }
     //productos que cuesten menos de 1 dolar
     @GET
-    @Path("/mayorCompra/producto")
+    @Path("/maxBuy/product")
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<productoVO> getJsonMayorCompraProducto() {
+    public ArrayList<productoVO> getJsonMaxProductBuy() {
         productoDAO prod=new productoDAO();
         ArrayList<productoVO> productoVO=new ArrayList<productoVO>();
         productoVO=prod.mostrarProductoMayorCompra();
@@ -62,9 +62,9 @@ public class ProductResource {
     }
     //producto mas Caro
     @GET
-    @Path("/productos/masCaro")
+    @Path("/products/maxExpensive")
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<productoVO> getJsonProductoMasCaro() {
+    public ArrayList<productoVO> getJsonProductMoreExpensive() {
         productoDAO prod=new productoDAO();
         ArrayList<productoVO> productoVO=new ArrayList<productoVO>();
         productoVO=prod.mostrarProductoMasCaro();

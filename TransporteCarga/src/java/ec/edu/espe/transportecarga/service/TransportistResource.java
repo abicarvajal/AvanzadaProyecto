@@ -42,14 +42,15 @@ public class TransportistResource {
 
     //transportistas que corresponden a un cliente X
         @GET
-    @Path("/carriers/{carrier}")
+    @Path("/carriers/{transportist}")
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<transportistaVO> getJsonClientCarrier(@PathParam("carrier")String carrier) {
+    public ArrayList<transportistaVO> getJsonTransportistCarrier(@PathParam("transportist")String carrier) {
         //TODO return proper representation object
-        transportistaDAO client=new transportistaDAO();
+        transportistaDAO transportist=new transportistaDAO();
         ArrayList<transportistaVO> transportistaVO=new ArrayList<transportistaVO>();
-        transportistaVO=client.mostrarTransportistaCarrier(carrier);
+        transportistaVO=transportist.mostrarTransportistaCarrier(carrier);
         return transportistaVO;
+        
     }
 
 

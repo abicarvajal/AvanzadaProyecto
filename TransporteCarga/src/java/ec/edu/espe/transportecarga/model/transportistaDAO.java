@@ -262,7 +262,7 @@ public class transportistaDAO {
         transportistaVO transportista;
         try{
             Connection acceso = con.obtenerConexion();
-            PreparedStatement ps= acceso.prepareStatement("SELECT *, COUNT(cedulaTransportista) as TOTAL from guia WHERE WHEREcedulaCliente='"+carrier+"'");
+            PreparedStatement ps= acceso.prepareStatement("SELECT *, COUNT(cedulaTransportista) as TOTAL from guia WHERE cedulaCliente='"+carrier+"'");
             ResultSet rs=ps.executeQuery();
             while (rs.next()){
                 transportista=new transportistaVO();
@@ -275,6 +275,7 @@ public class transportistaDAO {
                 transportista.setPlaca(rs.getString(7));
                 
                 listaB.add(transportista);
+                System.out.println(transportista.toString());
             }
         }catch(SQLException ex){
             System.out.println(ex);

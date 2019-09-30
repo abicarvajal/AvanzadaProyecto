@@ -375,13 +375,12 @@ public class clienteDAO {
         ArrayList <clienteVO> listaB=new ArrayList <clienteVO>();
         clienteVO cliente;
         try{
-            Connection acceso = con.obtenerConexion();
-            String aux="TOTAL";
-            PreparedStatement ps= acceso.prepareStatement("SELECT cedulaCliente , SUM(valorEnvio) AS TOTAL\n" +
+            Connection acceso = con.obtenerConexion();            
+            PreparedStatement ps= acceso.prepareStatement("SELECT *, cedulaCliente , SUM(valorEnvio) AS TOTAL\n" +
 "from guia\n" +
 "GROUP BY cedulaCliente\n" +
 "ORDER BY TOTAL DESC\n" +
-"limit 1");
+"limit 1;");
             ResultSet rs=ps.executeQuery();
             while (rs.next()){
                 cliente=new clienteVO();
@@ -395,6 +394,7 @@ public class clienteDAO {
                 cliente.setCalleS(rs.getString(8));
                 cliente.setLote(rs.getString(9));
                 listaB.add(cliente);
+                System.out.println(listaB);
             }
         }catch(SQLException ex){
             System.out.println(ex);

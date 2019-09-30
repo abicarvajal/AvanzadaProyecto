@@ -52,7 +52,7 @@ public class ClientResource {
     }
         //CLIENTES QUE SEAN FUERA DE QUITO
     @GET
-    @Path("/city/fuera")
+    @Path("/city/out")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<clienteVO> getJsonOutQuitoClientCity() {
         //TODO return proper representation object
@@ -84,11 +84,11 @@ public class ClientResource {
         clientVO=client.mostrarClienteMayorValorComprado();
         return clientVO;
     }
-        //Clientes que corresponden a un transportista X
+        //Clientes que hagan mayor gasto X
     @GET
-    @Path("/cliente/gasto/mayorGasto")
+    @Path("/cliente/expenditure/maxExpenditure")
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<clienteVO> getJsonClientMayorGasto() {
+    public ArrayList<clienteVO> getJsonClientmaxExpenditure() {
         //TODO return proper representation object
         clienteDAO client=new clienteDAO();
         ArrayList<clienteVO> clientVO=new ArrayList<clienteVO>();

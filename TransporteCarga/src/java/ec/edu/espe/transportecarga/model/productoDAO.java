@@ -173,7 +173,7 @@ public class productoDAO {
        productoVO producto;
         try{
             Connection acceso = con.obtenerConexion();
-            PreparedStatement ps= acceso.prepareStatement("SELECT codigoProducto , SUM(valorEnvio) as MasVendido\n" +
+            PreparedStatement ps= acceso.prepareStatement("SELECT *, codigoProducto , SUM(valorEnvio) as MasVendido\n" +
 "FROM guia\n" +
 "WHERE codigoProducto != 'TOTAL'\n" +
 "GROUP BY codigoProducto\n" +
@@ -199,7 +199,7 @@ public class productoDAO {
        productoVO producto;
         try{
             Connection acceso = con.obtenerConexion();
-            PreparedStatement ps= acceso.prepareStatement("SELECT descripcion, MAX(valorEnvio)\n" +
+            PreparedStatement ps= acceso.prepareStatement("SELECT *, descripcion, MAX(valorEnvio)\n" +
 "FROM producto;");
             ResultSet rs=ps.executeQuery();
             while (rs.next()){
