@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class Conectar {
 
     static String us = "root";
-    static String pass = "";
+    static String pass = "root";
     static String bd = "proyecto";
     static String url = "jdbc:mysql://localhost:3306/proyecto?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     public Connection con = null;

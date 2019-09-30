@@ -257,6 +257,30 @@ public class transportistaDAO {
         }
     }    
     
+    public ArrayList<transportistaVO> mostrarTransportistaCarrier(String carrier){
+        ArrayList <transportistaVO> listaB=new ArrayList <transportistaVO>();
+        transportistaVO transportista;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT *, COUNT(cedulaTransportista) as TOTAL from guia WHERE WHEREcedulaCliente='"+carrier+"'");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                transportista=new transportistaVO();
+                transportista.setIdentificacion(rs.getString(1));
+                transportista.setNombre(rs.getString(2));
+                transportista.setDireccion(rs.getString(3));
+                transportista.setTelefono(rs.getString(4));
+                transportista.setCorreo(rs.getString(5));
+                transportista.setZona(rs.getString(6));
+                transportista.setPlaca(rs.getString(7));
+                
+                listaB.add(transportista);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return listaB;
+    }
     
     
         public void consultarCombo(JComboBox cbox_paises){
@@ -275,7 +299,7 @@ public class transportistaDAO {
         }catch(SQLException ex){
             System.out.println(ex);
         }
-
+        
 
     
 

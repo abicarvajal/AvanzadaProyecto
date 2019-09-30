@@ -167,8 +167,55 @@ public class productoDAO {
         }
         return product;
     }
-
-
+        
+    public ArrayList<productoVO> mostrarProductoMayorCompra(){
+       ArrayList<productoVO> product=new ArrayList<productoVO>();
+       productoVO producto;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT codigoProducto , SUM(valorEnvio) as MasVendido\n" +
+"FROM guia\n" +
+"WHERE codigoProducto != 'TOTAL'\n" +
+"GROUP BY codigoProducto\n" +
+"ORDER BY MasVendido DESC\n" +
+"limit 1");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                producto=new productoVO();
+                producto.setCodigo(rs.getString(1));
+                producto.setDescrpcion(rs.getString(2));
+                producto.setValorEnvio(rs.getFloat(3));
+                producto.setClaseProducto(rs.getString(4));
+                product.add(producto);
+                System.out.println(producto.toString());
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return product;
+    }
+    public ArrayList<productoVO> mostrarProductoMasCaro(){
+       ArrayList<productoVO> product=new ArrayList<productoVO>();
+       productoVO producto;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT descripcion, MAX(valorEnvio)\n" +
+"FROM producto;");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                producto=new productoVO();
+                producto.setCodigo(rs.getString(1));
+                producto.setDescrpcion(rs.getString(2));
+                producto.setValorEnvio(rs.getFloat(3));
+                producto.setClaseProducto(rs.getString(4));
+                product.add(producto);
+                System.out.println(producto.toString());
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return product;
+    }
     public void mostrarProductoComno(JComboBox combo){
         ArrayList <productoVO> listaB=new ArrayList <productoVO>();
         productoVO producto;

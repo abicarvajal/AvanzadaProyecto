@@ -50,6 +50,17 @@ public class ClientResource {
         clientVO=client.mostrarClienteQuito(city);
         return clientVO;
     }
+        //CLIENTES QUE SEAN FUERA DE QUITO
+    @GET
+    @Path("/city/fuera")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<clienteVO> getJsonOutQuitoClientCity() {
+        //TODO return proper representation object
+        clienteDAO client=new clienteDAO();
+        ArrayList<clienteVO> clientVO=new ArrayList<clienteVO>();
+        clientVO=client.mostrarClienteFueraQuito();
+        return clientVO;
+    }
     //Clientes que corresponden a un transportista X
     @GET
     @Path("/carriers/{carrier}")
@@ -71,6 +82,17 @@ public class ClientResource {
         clienteDAO client=new clienteDAO();
         ArrayList<clienteVO> clientVO=new ArrayList<clienteVO>();
         clientVO=client.mostrarClienteMayorValorComprado();
+        return clientVO;
+    }
+        //Clientes que corresponden a un transportista X
+    @GET
+    @Path("/cliente/gasto/mayorGasto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<clienteVO> getJsonClientMayorGasto() {
+        //TODO return proper representation object
+        clienteDAO client=new clienteDAO();
+        ArrayList<clienteVO> clientVO=new ArrayList<clienteVO>();
+        clientVO=client.mostrarClienteMayorGastoEnCompras();
         return clientVO;
     }
     //clientes que han comprado productos fragiles

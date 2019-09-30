@@ -175,6 +175,31 @@ public class clienteDAO {
         }
         return listaB;
     }
+        public ArrayList<clienteVO> mostrarClienteFueraQuito(){
+        ArrayList <clienteVO> listaB=new ArrayList <clienteVO>();
+        clienteVO cliente;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT * FROM cliente WHERE ciudad!='Quito';");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                cliente=new clienteVO();
+                cliente.setIdentificacion(rs.getString(1));
+                cliente.setNombre(rs.getString(2));
+                cliente.setTelefono(rs.getString(3));
+                cliente.setCorreo(rs.getString(4));
+                cliente.setCiudad(rs.getString(5));
+                cliente.setZona(rs.getString(6));
+                cliente.setCalleP(rs.getString(7));
+                cliente.setCalleS(rs.getString(8));
+                cliente.setLote(rs.getString(9));
+                listaB.add(cliente);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return listaB;
+    }
     public ArrayList<clienteVO> mostrarClienteCarrier(String carrier){
         ArrayList <clienteVO> listaB=new ArrayList <clienteVO>();
         clienteVO cliente;
@@ -346,6 +371,36 @@ public class clienteDAO {
             System.out.println(ex);
         }
     }    
+    public ArrayList<clienteVO> mostrarClienteMayorGastoEnCompras(){
+        ArrayList <clienteVO> listaB=new ArrayList <clienteVO>();
+        clienteVO cliente;
+        try{
+            Connection acceso = con.obtenerConexion();
+            String aux="TOTAL";
+            PreparedStatement ps= acceso.prepareStatement("SELECT cedulaCliente , SUM(valorEnvio) AS TOTAL\n" +
+"from guia\n" +
+"GROUP BY cedulaCliente\n" +
+"ORDER BY TOTAL DESC\n" +
+"limit 1");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                cliente=new clienteVO();
+                cliente.setIdentificacion(rs.getString(1));
+                cliente.setNombre(rs.getString(2));
+                cliente.setTelefono(rs.getString(3));
+                cliente.setCorreo(rs.getString(4));
+                cliente.setCiudad(rs.getString(5));
+                cliente.setZona(rs.getString(6));
+                cliente.setCalleP(rs.getString(7));
+                cliente.setCalleS(rs.getString(8));
+                cliente.setLote(rs.getString(9));
+                listaB.add(cliente);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return listaB;
+    }
     
     
 }

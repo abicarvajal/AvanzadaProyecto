@@ -21,7 +21,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * REST Web Service
  *
- * @author Melissa
+ * @author Jefferson
  */
 @Path("Product")
 public class ProductResource {
@@ -50,7 +50,26 @@ public class ProductResource {
         productoVO=prod.mostrarProductosMenoresA1(valor);
         return productoVO;
     }
-
+    //productos que cuesten menos de 1 dolar
+    @GET
+    @Path("/mayorCompra/producto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<productoVO> getJsonMayorCompraProducto() {
+        productoDAO prod=new productoDAO();
+        ArrayList<productoVO> productoVO=new ArrayList<productoVO>();
+        productoVO=prod.mostrarProductoMayorCompra();
+        return productoVO;
+    }
+    //producto mas Caro
+    @GET
+    @Path("/productos/masCaro")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<productoVO> getJsonProductoMasCaro() {
+        productoDAO prod=new productoDAO();
+        ArrayList<productoVO> productoVO=new ArrayList<productoVO>();
+        productoVO=prod.mostrarProductoMasCaro();
+        return productoVO;
+    }
     //producto vendidos y su cantidad
     @GET
     @Path("/productos/vendidosCant")
