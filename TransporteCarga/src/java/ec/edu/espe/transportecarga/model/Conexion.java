@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class Conexion {
     String bd="proyecto";
     String login="root";
-    String passw="";
+    String passw="root";
     String url = "jdbc:mysql://localhost:3306/proyecto?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     
     Connection objConex=null;
