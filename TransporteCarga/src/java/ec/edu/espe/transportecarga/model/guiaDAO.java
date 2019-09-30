@@ -341,5 +341,35 @@ public class guiaDAO {
         return listaB;
     }
     
+    public float montoPedidoMes(int mes){
+        float total=0;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT SUM(valorEnvio) FROM guia WHERE fecha like '%/"+mes+"/%' and codigoProducto='TOTAL';");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                total=rs.getFloat(1);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return total;
+    }
+    
+    public float montoPedidoAnio(int anio){
+        float total=0;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT SUM(valorEnvio) FROM guia WHERE fecha like '%/"+anio+"%' and codigoProducto='TOTAL';");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                total=rs.getFloat(1);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return total;
+    }
+    
     
 }

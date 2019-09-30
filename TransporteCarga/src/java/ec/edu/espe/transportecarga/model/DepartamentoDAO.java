@@ -67,8 +67,8 @@ public class DepartamentoDAO {
     }
     
     
-            public void adicionarDep(DepartamentoVO departamento){
-                    Conectar conec = new Conectar();
+    public void adicionarDep(DepartamentoVO departamento){
+        Conectar conec = new Conectar();
         PreparedStatement ps = null;
         Connection con = null;
         ResultSet rs = null;
@@ -82,6 +82,6 @@ public class DepartamentoDAO {
             System.out.println(ex.getMessage());
         }
         
-        }
+    }
     
 }

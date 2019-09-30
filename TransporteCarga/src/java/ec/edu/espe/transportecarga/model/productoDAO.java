@@ -144,6 +144,29 @@ public class productoDAO {
         }
         return producto;
     }
+    
+    
+        public ArrayList<productoVO> mostrarProductosVendido(){
+       ArrayList<productoVO> product=new ArrayList<productoVO>();
+       productoVO producto;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT p.*, COUNT(g.codigoProducto) FROM guia as g, producto as p WHERE g.codigoProducto=p.codigo GROUP BY g.codigoProducto");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                producto=new productoVO();
+                producto.setCodigo(rs.getString(1));
+                producto.setDescrpcion(rs.getString(2));
+                producto.setValorEnvio(rs.getFloat(3));
+                producto.setClaseProducto(rs.getString(4));
+                product.add(producto);
+                System.out.println(producto.toString());
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return product;
+    }
 
 
     public void mostrarProductoComno(JComboBox combo){

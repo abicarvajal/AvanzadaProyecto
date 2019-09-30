@@ -5,7 +5,10 @@
  */
 package ec.edu.espe.transportecarga.service;
 
+import ec.edu.espe.transportecarga.model.ProvinciaDAO;
 import ec.edu.espe.transportecarga.model.ProvinciaVO;
+import ec.edu.espe.transportecarga.model.productoVO;
+import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -42,6 +45,20 @@ public class ProvinceResource {
         //TODO return proper representation object
         throw new UnsupportedOperationException();
     }
+    
+    
+        //provincias que pertenecen a Quito
+    @GET
+    @Path("/provincia/Quito/lista")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<ProvinciaVO> getJsonProvinciaQuito() {
+        ProvinciaDAO prov=new ProvinciaDAO();
+        ArrayList<ProvinciaVO> ProvinciaVO=new ArrayList<ProvinciaVO>();
+        ProvinciaVO=prov.mostrarProvinciasQuito();
+        return ProvinciaVO;
+    }
+
+
 
     /**
      * PUT method for updating or creating an instance of ProvinceResource

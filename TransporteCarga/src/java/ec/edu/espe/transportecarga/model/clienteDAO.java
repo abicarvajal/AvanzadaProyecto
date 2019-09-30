@@ -125,6 +125,56 @@ public class clienteDAO {
         }
         return listaB;
     }
+    public ArrayList<clienteVO> mostrarClienteProductoFragil(){
+        ArrayList <clienteVO> listaB=new ArrayList <clienteVO>();
+        clienteVO cliente;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT c.*, COUNT(g.codigoProducto) AS TOTAL FROM producto as p, guia as g, cliente as c WHERE g.codigoProducto=p.codigo AND p.claseProducto=\"Frágil\" AND g.cedulaCliente=c.identificacion GROUP BY g.cedulaCliente ORDER BY TOTAL DESC");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                cliente=new clienteVO();
+                cliente.setIdentificacion(rs.getString(1));
+                cliente.setNombre(rs.getString(2));
+                cliente.setTelefono(rs.getString(3));
+                cliente.setCorreo(rs.getString(4));
+                cliente.setCiudad(rs.getString(5));
+                cliente.setZona(rs.getString(6));
+                cliente.setCalleP(rs.getString(7));
+                cliente.setCalleS(rs.getString(8));
+                cliente.setLote(rs.getString(9));
+                listaB.add(cliente);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return listaB;
+    }
+    public ArrayList<clienteVO> mostrarClienteValle(){
+        ArrayList <clienteVO> listaB=new ArrayList <clienteVO>();
+        clienteVO cliente;
+        try{
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps= acceso.prepareStatement("SELECT c.*, COUNT(c.ciudad) AS TOTAL FROM cliente as c WHERE c.ciudad=\"Quito\" AND c.zona=\"valle\"");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                cliente=new clienteVO();
+                cliente.setIdentificacion(rs.getString(1));
+                cliente.setNombre(rs.getString(2));
+                cliente.setTelefono(rs.getString(3));
+                cliente.setCorreo(rs.getString(4));
+                cliente.setCiudad(rs.getString(5));
+                cliente.setZona(rs.getString(6));
+                cliente.setCalleP(rs.getString(7));
+                cliente.setCalleS(rs.getString(8));
+                cliente.setLote(rs.getString(9));
+                listaB.add(cliente);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return listaB;
+    }
     public ArrayList<clienteVO> mostrarClienteCarrier(String carrier){
         ArrayList <clienteVO> listaB=new ArrayList <clienteVO>();
         clienteVO cliente;
@@ -150,6 +200,34 @@ public class clienteDAO {
         }
         return listaB;
     }
+   
+    public ArrayList<clienteVO> mostrarClienteMayorValorComprado(){
+        ArrayList <clienteVO> listaB=new ArrayList <clienteVO>();
+        clienteVO cliente;
+        try{
+            Connection acceso = con.obtenerConexion();
+            String aux="TOTAL";
+            PreparedStatement ps= acceso.prepareStatement("SELECT c.*, SUM(valorEnvio) AS TOTAL from guia as g, cliente as c WHERE g.codigoProducto='"+aux+"' AND g.cedulaCliente=c.identificacion GROUP BY g.cedulaCliente ORDER BY TOTAL DESC LIMIT 1");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                cliente=new clienteVO();
+                cliente.setIdentificacion(rs.getString(1));
+                cliente.setNombre(rs.getString(2));
+                cliente.setTelefono(rs.getString(3));
+                cliente.setCorreo(rs.getString(4));
+                cliente.setCiudad(rs.getString(5));
+                cliente.setZona(rs.getString(6));
+                cliente.setCalleP(rs.getString(7));
+                cliente.setCalleS(rs.getString(8));
+                cliente.setLote(rs.getString(9));
+                listaB.add(cliente);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return listaB;
+    }
+   
     public ArrayList<clienteVO> mostrarCliente(){
         ArrayList <clienteVO> listaB=new ArrayList <clienteVO>();
         clienteVO cliente;
