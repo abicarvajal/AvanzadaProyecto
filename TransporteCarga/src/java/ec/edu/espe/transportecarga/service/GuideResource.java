@@ -54,8 +54,28 @@ public class GuideResource {
         guiaVO=guia.mostrarGuiaFecha(date);
         return guiaVO;
     }
-   
+   //CONSULTA GUIA POR cliente (cedula)
+    @GET
+    @Path("/orders/clients/{IDclient}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<guiaVO> getJsonGuidesByClient(@PathParam("IDclient") String IDclient) {
+       guiaDAO guia=new guiaDAO();
+       ArrayList<guiaVO> guiaVO=new ArrayList<guiaVO>();
+        guiaVO=guia.mostrarGuiaCliente(IDclient);
+        return guiaVO;
+    }
+    //CONSULTA GUIA POR TRANSPORTISTA (cedula)
+    @GET
+    @Path("/orders/carrier/{IDcarrier}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<guiaVO> getJsonGuidesByCarrier(@PathParam("IDcarrier") String IDcarrier) {
+       guiaDAO guia=new guiaDAO();
+       ArrayList<guiaVO> guiaVO=new ArrayList<guiaVO>();
+        guiaVO=guia.mostrarGuiaT(IDcarrier);
+        return guiaVO;
+    }
     
+   
     /**
      * PUT method for updating or creating an instance of GuideResource
      * @param content representation for the resource
