@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 14-07-2019 a las 18:28:18
--- Versión del servidor: 5.7.17-log
--- Versión de PHP: 5.6.30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 03-11-2019 a las 17:55:52
+-- Versión del servidor: 10.1.39-MariaDB
+-- Versión de PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -96,7 +98,7 @@ INSERT INTO `departamento` (`iddepartamento`, `departamento`) VALUES
 
 CREATE TABLE `guia` (
   `numero` int(11) NOT NULL,
-  `fecha` varchar(20) NOT NULL,
+  `fecha` varchar(64) NOT NULL,
   `cedulaCliente` varchar(20) NOT NULL,
   `cedulaTransportista` varchar(20) NOT NULL,
   `codigoProducto` varchar(20) NOT NULL,
@@ -111,14 +113,14 @@ CREATE TABLE `guia` (
 --
 
 INSERT INTO `guia` (`numero`, `fecha`, `cedulaCliente`, `cedulaTransportista`, `codigoProducto`, `valorEnvio`, `destino`, `direccion`, `estadoReserva`) VALUES
-(1, '10/7/2019', '0604188086', '0602175143', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
-(1, '10/7/2019', '0604188086', '0602175143', 'TOTAL', '1.0', 'Quito', 'Item 1', 'ANULADO'),
-(2, '12/7/2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
-(2, '12/7/2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
-(2, '12/7/2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
-(2, '12/7/2019', '0604188086', '0650026230', 'TOTAL', '3.0', 'Quito', 'Item 1', 'ANULADO'),
-(3, '14/7/2019', '1718911488', '1714786629', 'PR761', '1.0', 'Quito', 'valle', 'ACTIVO'),
-(3, '14/7/2019', '1718911488', '1714786629', 'TOTAL', '1.0', 'Quito', 'valle', 'ACTIVO');
+(1, '10/6/2019', '0604188086', '0602175143', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
+(1, '10/6/2019', '0604188086', '0602175143', 'TOTAL', '1.0', 'Quito', 'Item 1', 'ANULADO'),
+(2, '10/6/2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
+(2, '10/6/2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
+(2, '10/6/2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
+(2, '10/6/2019', '0604188086', '0650026230', 'TOTAL', '3.0', 'Quito', 'Item 1', 'ANULADO'),
+(3, '10/6/2019', '1718911488', '1714786629', 'PR761', '1.0', 'Quito', 'valle', 'ACTIVO'),
+(3, '10/6/2019', '1718911488', '1714786629', 'TOTAL', '1.0', 'Quito', 'valle', 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -236,6 +238,7 @@ INSERT INTO `zona` (`codigo`, `nombre`, `ciudad`) VALUES
 ('Z317', 'norte', 'Quito'),
 ('Z452', 'sur', 'Quito'),
 ('Z782', 'alboradaUno', 'Guayaquil');
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
