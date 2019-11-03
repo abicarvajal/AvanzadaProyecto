@@ -120,17 +120,29 @@ public class ClientResource {
     }
 
 
-    /*
-    
-     @GET
-    @Path("{id}/{name}")
+    //CRUD CLIENTE
+    @GET
+    @Path("/cliente")
     @Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-    public Student getJsonStudentById(@PathParam("id") int id, @PathParam("name") String name) {
+    public ArrayList<clienteVO> getJsonStudentById(@PathParam("id") int id) {
         //TODO return proper representation object
-        Student student=new Student(id,name,"Apellido",8.0f,22);
-        return student;
+        clienteDAO cliente=new clienteDAO();
+        ArrayList<clienteVO> clientes = new ArrayList<clienteVO>();
+        clientes=cliente.mostrarCliente();
+        return clientes;
     }
-    */
+    
+    @PUT
+    @Path("/cliente/")
+    @Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+    public void putJsonClient(@PathParam("id") int id) {
+        //TODO return proper representation object
+        clienteDAO client=new clienteDAO();
+        clienteVO cliente = new clienteVO();
+        client.adicionarCliente(cliente);
+    }
+  
+    
     /**
      * PUT method for updating or creating an instance of ClientResource
      * @param content representation for the resource
