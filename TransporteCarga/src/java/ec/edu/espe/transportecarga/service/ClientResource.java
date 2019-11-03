@@ -40,6 +40,7 @@ public class ClientResource {
      * @return an instance of ec.edu.espe.transportecarga.model.clienteVO
      */
     //CLIENTES QUE SEAN DE QUITO
+    /*
     @GET
     @Path("{city}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -141,12 +142,13 @@ public class ClientResource {
         clienteVO cliente = new clienteVO();
         client.adicionarCliente(cliente);
     }
-  
+  */
     
     /**
      * PUT method for updating or creating an instance of ClientResource
      * @param content representation for the resource
      */
+    
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void putJson(clienteVO content) {

@@ -43,86 +43,18 @@ public class GuideResource {
      * Retrieves representation of an instance of ec.edu.espe.transportecarga.service.GuideResource
      * @return an instance of ec.edu.espe.transportecarga.model.guiaVO
      */
-    //CLIENTE QUE MAS HA HECHO PEDIDOS 
+   
+    //CONSULTA GUIA POR FECHA
     @GET
-    @Path("/orders/max")
+    @Path("/orders/dates/{date}")
     @Produces(MediaType.APPLICATION_JSON)
-    public guiaVO getJsonMaxOrders() {
-       //TODO return proper representation object
-        guiaDAO guia=new guiaDAO();
-        ArrayList<guiaVO> guiaVO=new ArrayList<guiaVO>();
-        guiaVO=guia.mostrarClientePedidos();
-        return guiaVO.get(0);
-    }
-    
-    //Clientes que corresponden a un transportista X
-    @GET
-    @Path("/order/{month}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<guiaVO> getJsonGuideMonth(@PathParam("month")int month) {
-        guiaDAO guia=new guiaDAO();
-        ArrayList<guiaVO> guiaVO=new ArrayList<guiaVO>();
-        guiaVO=guia.mostrarClientePedidoMes(month);
+    public ArrayList<guiaVO> getJsonGuidesByDate(@PathParam("date") String date) {
+       guiaDAO guia=new guiaDAO();
+       ArrayList<guiaVO> guiaVO=new ArrayList<guiaVO>();
+        guiaVO=guia.mostrarGuiaFecha(date);
         return guiaVO;
     }
-    
-   //Ciudades y cantidad de pedidos realizados de cada ciudad
-    @GET
-    @Path("/pedidos/ciudad")
-    @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<String> getJsonCiudadesPedidos() {
-       //TODO return proper representation object
-        guiaDAO guia=new guiaDAO();
-        ArrayList<String> guiaVO=new ArrayList<String>();
-        guiaVO=guia.ciudadesTotalPedidos();
-        return guiaVO;
-    }
-    
-   //Transportistas y suma de envios realizados (histórico)
-    @GET
-    @Path("/pedidos/transportistas/monto")
-    @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<String> getJsonTransportistasMontoPedidos() {
-       //TODO return proper representation object
-        guiaDAO guia=new guiaDAO();
-        ArrayList<String> guiaVO=new ArrayList<String>();
-        guiaVO=guia.transportistasTotalEnvios();
-        return guiaVO;
-    }
-    
-    //Transportistas y suma de envios realizados (histórico)
-    @GET
-    @Path("/pedidos/productos/monto")
-    @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<String> getJsonProductosMontoTotal() {
-       //TODO return proper representation object
-        guiaDAO guia=new guiaDAO();
-        ArrayList<String> guiaVO=new ArrayList<String>();
-        guiaVO=guia.productosMontoTotal();
-        return guiaVO;
-    }
-    
-    //Monto total de guias en un mes dado
-    @GET
-    @Path("/order/monto/mes/{month}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public float getJsonMontoTotalMes(@PathParam("month")int month) {
-        guiaDAO guia=new guiaDAO();
-        float total=0;
-        total=guia.montoPedidoMes(month);
-        return total;
-    }
-    
-    //Monto total de guias en un año dado
-    @GET
-    @Path("/order/monto/anio/{anio}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public float getJsonMontoTotalAnio(@PathParam("anio")int anio) {
-        guiaDAO guia=new guiaDAO();
-        float total=0;
-        total=guia.montoPedidoAnio(anio);
-        return total;
-    }
+   
     
     /**
      * PUT method for updating or creating an instance of GuideResource

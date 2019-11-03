@@ -310,7 +310,7 @@ public class consultafecha extends javax.swing.JFrame {
         int dia = fecha.getDate().getDate();
         int mes = fecha.getDate().getMonth()+1;
         int anio = fecha.getDate().getYear()+1900;
-        String fechaBuscar= Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(anio);
+        String fechaBuscar= Integer.toString(dia)+"-"+Integer.toString(mes)+"-"+Integer.toString(anio);
         System.out.println("Fecha buscar"+fechaBuscar);
         tabla(fechaBuscar);
         // TODO add your handling code here:

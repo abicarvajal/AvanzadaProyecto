@@ -217,10 +217,10 @@ public class guiaDAO {
         ArrayList <guiaVO> listaB=new ArrayList <guiaVO>();
         guiaVO guia;
         try{
+            
             String aux1="TOTAL";
             Connection acceso = con.obtenerConexion();
             PreparedStatement ps= acceso.prepareStatement("select * from guia where fecha='"+aux+"'"+"and codigoProducto='"+aux1+"'");
-            
             ResultSet rs=ps.executeQuery();
             while (rs.next()){
                 guia=new guiaVO();

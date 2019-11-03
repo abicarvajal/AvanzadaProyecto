@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-11-2019 a las 17:55:52
+-- Tiempo de generación: 03-11-2019 a las 18:28:39
 -- Versión del servidor: 10.1.39-MariaDB
 -- Versión de PHP: 7.3.5
 
@@ -113,14 +113,14 @@ CREATE TABLE `guia` (
 --
 
 INSERT INTO `guia` (`numero`, `fecha`, `cedulaCliente`, `cedulaTransportista`, `codigoProducto`, `valorEnvio`, `destino`, `direccion`, `estadoReserva`) VALUES
-(1, '10/6/2019', '0604188086', '0602175143', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
-(1, '10/6/2019', '0604188086', '0602175143', 'TOTAL', '1.0', 'Quito', 'Item 1', 'ANULADO'),
-(2, '10/6/2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
-(2, '10/6/2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
-(2, '10/6/2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
-(2, '10/6/2019', '0604188086', '0650026230', 'TOTAL', '3.0', 'Quito', 'Item 1', 'ANULADO'),
-(3, '10/6/2019', '1718911488', '1714786629', 'PR761', '1.0', 'Quito', 'valle', 'ACTIVO'),
-(3, '10/6/2019', '1718911488', '1714786629', 'TOTAL', '1.0', 'Quito', 'valle', 'ACTIVO');
+(1, '10-6-2019', '0604188086', '0602175143', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
+(1, '10-6-2019', '0604188086', '0602175143', 'TOTAL', '1.0', 'Quito', 'Item 1', 'ANULADO'),
+(2, '10-6-2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
+(2, '10-6-2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
+(2, '10-6-2019', '0604188086', '0650026230', 'PR761', '1.0', 'Quito', 'Item 1', 'ANULADO'),
+(2, '10-6-2019', '0604188086', '0650026230', 'TOTAL', '3.0', 'Quito', 'Item 1', 'ANULADO'),
+(3, '10-6-2019', '1718911488', '1714786629', 'PR761', '1.0', 'Quito', 'valle', 'ACTIVO'),
+(3, '10-6-2019', '1718911488', '1714786629', 'TOTAL', '1.0', 'Quito', 'valle', 'ACTIVO');
 
 -- --------------------------------------------------------
 
