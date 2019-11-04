@@ -33,7 +33,7 @@ public class leerZ extends javax.swing.JFrame {
         zonaVO zonaVO=new zonaVO();
         zonaDAO zonaDAO=new zonaDAO();
         ArrayList <zonaVO> lista = new ArrayList <zonaVO>();
-           lista=zonaDAO.mostrarZona();
+           lista=zonaDAO.mostrarZonas();
            DefaultTableModel modeloT = new DefaultTableModel();
            jTable1.setModel(modeloT);
            modeloT.addColumn("Codigo");

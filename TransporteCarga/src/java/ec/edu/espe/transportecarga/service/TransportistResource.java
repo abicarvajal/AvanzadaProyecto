@@ -36,23 +36,23 @@ public class TransportistResource {
     }
 
     /**
-     * Retrieves representation of an instance of ec.edu.espe.transportecarga.service.ClientResource
+     * Retrieves representation of an instance of
+     * ec.edu.espe.transportecarga.service.ClientResource
+     *
      * @return an instance of ec.edu.espe.transportecarga.model.clienteVO
      */
-
     //transportistas que corresponden a un cliente X
-        @GET
-    @Path("/carriers/{transportist}")
+    @GET
+    @Path("/carriers/{IdCarrier}")
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<transportistaVO> getJsonTransportistCarrier(@PathParam("transportist")String carrier) {
+    public ArrayList<transportistaVO> getJsonTransportistCarrier(@PathParam("IdCarrier") String carrier) {
         //TODO return proper representation object
-        transportistaDAO transportist=new transportistaDAO();
-        ArrayList<transportistaVO> transportistaVO=new ArrayList<transportistaVO>();
-        transportistaVO=transportist.mostrarTransportistaCarrier(carrier);
+        transportistaDAO transportist = new transportistaDAO();
+        ArrayList<transportistaVO> transportistaVO = new ArrayList<transportistaVO>();
+        transportistaVO = transportist.mostrarTransportistaCarrier(carrier);
         return transportistaVO;
-        
-    }
 
+    }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
