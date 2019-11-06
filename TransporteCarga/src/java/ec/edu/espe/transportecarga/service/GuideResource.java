@@ -27,7 +27,7 @@ import javax.ws.rs.PathParam;
  *
  * @author Melissa
  */
-@Path("Guide")
+@Path("Guides")
 public class GuideResource {
 
     @Context
