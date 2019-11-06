@@ -88,7 +88,15 @@ public class GuideResource {
         System.out.println(data.getDireccion());
         System.out.println(data.getEstadoReserva());
     }
-
+    @PUT
+    @Path("update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void update(guiaVO data) {
+        guiaDAO response = new guiaDAO();        
+        response.modificarGuiaPorNumero(data.getNumero());
+        //System.out.println(data.getNumero());
+    }
+    
     @DELETE
     @Path("deleteBy/{number}")
     public void remove(@PathParam("number") String number) {

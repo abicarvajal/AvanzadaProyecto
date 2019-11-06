@@ -264,11 +264,26 @@ public class guiaDAO {
 
     public void modificarGuia(String numero) {
         try {
+            System.out.println("Entramos a modificar " + numero);
             String aux = "ANULADO";
             Connection acceso = con.obtenerConexion();
-            PreparedStatement ps = acceso.prepareStatement("UPDATE guia SET estadoReserva='" + aux + "'WHERE numero='" + numero + "'");
+            PreparedStatement ps = acceso.prepareStatement("UPDATE guia SET estadoReserva= 'ANULADO' WHERE numero= '" + numero + "';");
             ps.executeUpdate();
+            System.out.println("Dato modificado");
             JOptionPane.showMessageDialog(null, "Anulación Exitosa");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void modificarGuiaPorNumero(int numero) {
+        try {
+            System.out.println("Entramos a modificar " + numero);
+            String aux = "ANULADO";
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps = acceso.prepareStatement("UPDATE guia SET estadoReserva= 'ANULADO' WHERE numero= " + numero + ";");
+            ps.executeUpdate();
+            //System.out.println("Dato modificado, \n"+ps);            
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -440,6 +455,7 @@ public class guiaDAO {
         }
 
     }
+
     public ArrayList<guiaVO> mostrarGuias() {
         ArrayList<guiaVO> listaB = new ArrayList<guiaVO>();
         guiaVO guia;
