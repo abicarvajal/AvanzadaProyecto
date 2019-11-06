@@ -37,7 +37,7 @@ public class eliminarZ extends javax.swing.JFrame {
         zonaVO zonaVO=new zonaVO();
         zonaDAO zonaDAO=new zonaDAO();
         ArrayList <zonaVO> lista = new ArrayList <zonaVO>();
-           lista=zonaDAO.mostrarZonas();
+           lista=zonaDAO.mostrarZona();
            DefaultTableModel modeloT = new DefaultTableModel();
            jTable1.setModel(modeloT);
            modeloT.addColumn("Codigo");
@@ -308,7 +308,7 @@ public class eliminarZ extends javax.swing.JFrame {
                     }
                 }
                 ArrayList <zonaVO> lista = new ArrayList <zonaVO>();
-                lista=zonaDAO.mostrarZonas();
+                lista=zonaDAO.mostrarZona();
                 DefaultTableModel modeloT = new DefaultTableModel();
                 jTable1.setModel(modeloT);
                 modeloT.addColumn("Codigo");

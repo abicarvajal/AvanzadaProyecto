@@ -19,175 +19,159 @@ import javax.swing.JOptionPane;
  * @author nycha
  */
 public class zonaDAO {
-
     Conexion con;
 
     public zonaDAO() {
-        con = new Conexion();
+        con=new Conexion();
     }
-
-    public void adicionarZona(zonaVO zona) {
+    
+    public void adicionarZona(zonaVO zona){
         Connection acceso = con.obtenerConexion();
-        String sql = "INSERT INTO zona (codigo,nombre,ciudad) VALUES(?,?,?)";
-        try {
-            PreparedStatement ps = acceso.prepareStatement(sql);
+        String sql="INSERT INTO zona (codigo,nombre,ciudad) VALUES(?,?,?)";
+        try{
+            PreparedStatement ps= acceso.prepareStatement(sql);
             ps.setString(1, zona.getCodigo());
             ps.setString(2, zona.getNombre());
             ps.setString(3, zona.getCiudad());
             ps.executeUpdate();
-        } catch (SQLException ex) {
+        }catch(SQLException ex){
             System.out.println(ex);
         }
     }
+    
+    
+    
+    
 
-    public boolean buscarZonaCodigo(zonaVO zona) {
+    public boolean buscarZonaCodigo(zonaVO zona){
         boolean band = false;
         Connection acceso = con.obtenerConexion();
-        String sql = "SELECT * FROM zona WHERE codigo =? ";
-        try {
-            PreparedStatement ps = acceso.prepareStatement(sql);
+        String sql="SELECT * FROM zona WHERE codigo =? ";
+        try{
+            PreparedStatement ps= acceso.prepareStatement(sql);
             ps.setString(1, zona.getCodigo());
             ps.executeQuery();
 
-            if (ps.executeQuery().next()) {
-                band = true;
-            } else {
-                band = false;
+            if(ps.executeQuery().next()){
+                band=true;
+            }else{
+                band=false;
             }
-        } catch (SQLException ex) {
+        }catch(SQLException ex){
             System.out.println(ex);
         }
         return band;
     }
 
-    public void mostrarZinaComnoNombre(JComboBox combo) {
-        ArrayList<zonaVO> listaB = new ArrayList<zonaVO>();
+    
+        public void mostrarZinaComnoNombre(JComboBox combo){
+        ArrayList <zonaVO> listaB=new ArrayList <zonaVO>();
         zonaVO zona;
         combo.removeAllItems();
-        try {
+        try{
             Connection acceso = con.obtenerConexion();
-            PreparedStatement ps = acceso.prepareStatement("select nombre from zona");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            PreparedStatement ps= acceso.prepareStatement("select nombre from zona");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
                 combo.addItem(rs.getString("nombre"));
             }
-        } catch (SQLException ex) {
+        }catch(SQLException ex){
             System.out.println(ex);
         }
     }
 
-    public void mostrarZinaComnoCiudad(JComboBox combo) {
-        ArrayList<zonaVO> listaB = new ArrayList<zonaVO>();
+
+        
+            
+        public void mostrarZinaComnoCiudad(JComboBox combo){
+        ArrayList <zonaVO> listaB=new ArrayList <zonaVO>();
         zonaVO zona;
         combo.removeAllItems();
-        try {
+        try{
             Connection acceso = con.obtenerConexion();
-            PreparedStatement ps = acceso.prepareStatement("select ciudad from zona");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            PreparedStatement ps= acceso.prepareStatement("select ciudad from zona");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
                 combo.addItem(rs.getString("ciudad"));
             }
-        } catch (SQLException ex) {
+        }catch(SQLException ex){
             System.out.println(ex);
         }
     }
 
-    public boolean buscarZonaNombre(zonaVO zona) {
+        
+    public boolean buscarZonaNombre(zonaVO zona){
         boolean band = false;
         Connection acceso = con.obtenerConexion();
-        String sql = "SELECT * FROM zona WHERE nombre =? ";
-        try {
-            PreparedStatement ps = acceso.prepareStatement(sql);
+        String sql="SELECT * FROM zona WHERE nombre =? ";
+        try{
+            PreparedStatement ps= acceso.prepareStatement(sql);
             ps.setString(1, zona.getNombre());
             ps.executeQuery();
 
-            if (ps.executeQuery().next()) {
-                band = true;
-            } else {
-                band = false;
+            if(ps.executeQuery().next()){
+                band=true;
+            }else{
+                band=false;
             }
-        } catch (SQLException ex) {
+        }catch(SQLException ex){
             System.out.println(ex);
         }
         return band;
     }
-
-    public ArrayList<zonaVO> mostrarZonas() {
-        ArrayList<zonaVO> listaB = new ArrayList<zonaVO>();
+    
+    public ArrayList<zonaVO> mostrarZona(){
+        ArrayList <zonaVO> listaB=new ArrayList <zonaVO>();
         zonaVO zona;
-        try {
+        try{
             Connection acceso = con.obtenerConexion();
-            PreparedStatement ps = acceso.prepareStatement("select * from zona");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                zona = new zonaVO();
+            PreparedStatement ps= acceso.prepareStatement("select * from zona");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                zona=new zonaVO();
                 zona.setCodigo(rs.getString(1));
                 zona.setNombre(rs.getString(2));
                 zona.setCiudad(rs.getString(3));
                 listaB.add(zona);
             }
-        } catch (SQLException ex) {
+        }catch(SQLException ex){
             System.out.println(ex);
         }
         return listaB;
     }
 
-    public ArrayList<transportistaVO> mostrarTransportistaCarrier(String carrier) {
-        ArrayList<transportistaVO> listaB = new ArrayList<transportistaVO>();
-        transportistaVO transportista;
-        try {
-            Connection acceso = con.obtenerConexion();
-            PreparedStatement ps = acceso.prepareStatement("SELECT *, COUNT(cedulaTransportista) as TOTAL from guia WHERE cedulaCliente='" + carrier + "'");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                transportista = new transportistaVO();
-                transportista.setIdentificacion(rs.getString(1));
-                transportista.setNombre(rs.getString(2));
-                transportista.setDireccion(rs.getString(3));
-                transportista.setTelefono(rs.getString(4));
-                transportista.setCorreo(rs.getString(5));
-                transportista.setZona(rs.getString(6));
-                transportista.setPlaca(rs.getString(7));
-
-                listaB.add(transportista);
-                System.out.println(transportista.toString());
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        return listaB;
-    }
-
-    public void eliminarZonaCodigo(String code) {
+    
+    public void eliminarZonaCodigo(String dni){
         try {
             Connection accesoDB = con.obtenerConexion();
-            PreparedStatement ps = accesoDB.prepareStatement("DELETE FROM zona WHERE codigo like '" + code + "';");
+            PreparedStatement ps= accesoDB.prepareStatement("DELETE from zona where codigo='" +dni+"'");
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
         }
-
+        
     }
 
-    public void eliminarZonaNombre(String dni) {
+    public void eliminarZonaNombre(String dni){
         try {
             Connection accesoDB = con.obtenerConexion();
-            PreparedStatement ps = accesoDB.prepareStatement("DELETE FROM zona WHERE nombre = " + dni);
+            PreparedStatement ps= accesoDB.prepareStatement("DELETE from zona where nombre='" +dni+"'");
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
-        }
+        }   
     }
-
-    public void modificarZonaIdentificacion(zonaVO cli) {
-        try {
+    
+    public void modificarZonaIdentificacion(zonaVO cli){
+        try{
             Connection acceso = con.obtenerConexion();
-            PreparedStatement ps = acceso.prepareStatement("UPDATE zona SET nombre='" + cli.getNombre() + "', ciudad='" + cli.getCiudad() + "' WHERE codigo='" + cli.getCodigo() + "'");
+            PreparedStatement ps= acceso.prepareStatement("UPDATE zona SET nombre='" +cli.getNombre()+"', ciudad='"+cli.getCiudad()+"' WHERE codigo='"+cli.getCodigo()+"'" );
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Modificacion Exitosa");
-        } catch (SQLException ex) {
+        }catch(SQLException ex){
             System.out.println(ex);
         }
     }
-
+    
+    
 }
