@@ -34,7 +34,6 @@ public class ApplicationConfig extends javax.ws.rs.core.Application {
         resources.add(ec.edu.espe.transportecarga.service.GuideResource.class);
         resources.add(ec.edu.espe.transportecarga.service.ProductResource.class);
         resources.add(ec.edu.espe.transportecarga.service.ProvinceResource.class);
-        resources.add(ec.edu.espe.transportecarga.service.TransportistResource.class);
         resources.add(ec.edu.espe.transportecarga.service.UserResource.class);
         resources.add(ec.edu.espe.transportecarga.service.ZoneResource.class);
     }

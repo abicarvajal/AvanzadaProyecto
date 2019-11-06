@@ -27,7 +27,7 @@ import javax.ws.rs.PathParam;
  *
  * @author Melissa
  */
-@Path("Guide")
+@Path("Guides")
 public class GuideResource {
 
     @Context
@@ -75,6 +75,7 @@ public class GuideResource {
         return guiaVO;
     }
     
+   
    
     /**
      * PUT method for updating or creating an instance of GuideResource

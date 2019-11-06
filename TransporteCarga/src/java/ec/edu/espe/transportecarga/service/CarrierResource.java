@@ -5,7 +5,9 @@
  */
 package ec.edu.espe.transportecarga.service;
 //carrier es transportista en el vo
-import ec.edu.espe.transportecarga.model.transportistaVO;
+
+import ec.edu.espe.transportecarga.model.*;
+import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -13,6 +15,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -20,7 +23,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Melissa
  */
-@Path("Carrier")
+@Path("Carriers")
 public class CarrierResource {
 
     @Context
@@ -36,11 +39,14 @@ public class CarrierResource {
      * Retrieves representation of an instance of ec.edu.espe.transportecarga.service.CarrierResource
      * @return an instance of ec.edu.espe.transportecarga.model.transportistaVO
      */
+    //CONSULTA TODOS LOS TRANSPORTISTAS
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public transportistaVO getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public ArrayList<transportistaVO> getJsonAnyCarrier() {
+       transportistaDAO guia=new transportistaDAO();
+       ArrayList<transportistaVO> guiaVO=new ArrayList<transportistaVO>();
+        guiaVO=guia.mostrarTransportista();
+        return guiaVO;
     }
 
     /**

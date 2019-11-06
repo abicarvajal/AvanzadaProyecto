@@ -23,7 +23,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Melissa
  */
-@Path("Province")
+@Path("Provinces")
 public class ProvinceResource {
 
     @Context
@@ -47,16 +47,7 @@ public class ProvinceResource {
     }
     
     
-        //provincias que pertenecen a Quito
-    @GET
-    @Path("/provincia/Quito/lista")
-    @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<ProvinciaVO> getJsonProvinciaQuito() {
-        ProvinciaDAO prov=new ProvinciaDAO();
-        ArrayList<ProvinciaVO> ProvinciaVO=new ArrayList<ProvinciaVO>();
-        ProvinciaVO=prov.mostrarProvinciasQuito();
-        return ProvinciaVO;
-    }
+       
 
 
 

@@ -5,7 +5,9 @@
  */
 package ec.edu.espe.transportecarga.service;
 
+import ec.edu.espe.transportecarga.model.*;
 import ec.edu.espe.transportecarga.model.zonaVO;
+import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -36,11 +38,14 @@ public class ZoneResource {
      * Retrieves representation of an instance of ec.edu.espe.transportecarga.service.ZoneResource
      * @return an instance of ec.edu.espe.transportecarga.model.zonaVO
      */
+     //CONSULTA TODAS LAS ZONAS 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public zonaVO getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public ArrayList<zonaVO> getJsonAnyZone() {
+       zonaDAO guia=new zonaDAO();
+       ArrayList<zonaVO> guiaVO=new ArrayList<zonaVO>();
+        guiaVO=guia.mostrarZona();
+        return guiaVO;
     }
 
     /**

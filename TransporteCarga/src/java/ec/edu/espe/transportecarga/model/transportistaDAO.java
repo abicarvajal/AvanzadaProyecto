@@ -223,6 +223,7 @@ public class transportistaDAO {
             System.out.println(ex);
         }
     }
+    
     public void eliminarTransportistaNombre(String dni){
         try {
             Connection accesoDB = con.obtenerConexion();

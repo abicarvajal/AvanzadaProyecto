@@ -20,7 +20,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Melissa
  */
-@Path("User")
+@Path("Users")
 public class UserResource {
 
     @Context
@@ -36,13 +36,7 @@ public class UserResource {
      * Retrieves representation of an instance of ec.edu.espe.transportecarga.service.UserResource
      * @return an instance of ec.edu.espe.transportecarga.model.usuarioVO
      */
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public usuarioVO getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
-
+    
     /**
      * PUT method for updating or creating an instance of UserResource
      * @param content representation for the resource

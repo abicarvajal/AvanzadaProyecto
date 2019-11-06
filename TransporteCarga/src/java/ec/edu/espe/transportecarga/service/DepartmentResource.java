@@ -19,7 +19,7 @@ import javax.ws.rs.PUT;
  *
  * @author Melissa
  */
-@Path("Department")
+@Path("Departments")
 public class DepartmentResource {
 
     @Context
