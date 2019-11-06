@@ -21,6 +21,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 /**
  * REST Web Service
@@ -74,7 +76,60 @@ public class GuideResource {
         guiaVO=guia.mostrarGuiaT(IDcarrier);
         return guiaVO;
     }
+    @GET
+    @Path("ViewGuides")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<guiaVO> getJsonZones() {
+        //TODO return proper representation object
+        guiaDAO zona = new guiaDAO();
+        ArrayList<guiaVO> guiaVO = new ArrayList<guiaVO>();
+        guiaVO = zona.mostrarGuias();
+        return guiaVO;
+    }
+
+    @GET
+    @Path("guide/{number}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<guiaVO> getJsonGuide(@PathParam("number") String number) {
+        //TODO return proper representation object
+        guiaDAO guiaDAO = new guiaDAO();
+        ArrayList<guiaVO> guiaVO = new ArrayList<guiaVO>();
+        guiaVO = guiaDAO.mostrarGuia(number);
+        return guiaVO;
+    }
+
+    @POST
+    @Path("/createGuide")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void save(guiaVO data) {
+        guiaDAO response = new guiaDAO();
+        response.adicionarGuia(data);
+        System.out.println(data.getNumero());
+        System.out.println(data.getFecha());
+        System.out.println(data.getCedulaCliente());
+        System.out.println(data.getCedulaTransportista());
+        System.out.println(data.getCodigoProducto());
+        System.out.println(data.getValorEnvio());
+        System.out.println(data.getDestino());
+        System.out.println(data.getDireccion());
+        System.out.println(data.getEstadoReserva());
+    }
+    @PUT
+    @Path("updateGuide")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void update(guiaVO data) {
+        guiaDAO response = new guiaDAO();        
+        response.modificarGuiaPorNumero(data.getNumero());
+        //System.out.println(data.getNumero());
+    }
     
+    @DELETE
+    @Path("deleteGuide/{byNumber}")
+    public void remove(@PathParam("number") String number) {
+        guiaDAO response = new guiaDAO();
+        response.eliminarGuiaCodigo(number);
+        System.out.println(number);
+    }
    
    
     /**

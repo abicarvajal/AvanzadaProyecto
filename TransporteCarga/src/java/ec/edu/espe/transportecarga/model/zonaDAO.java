@@ -139,7 +139,25 @@ public class zonaDAO {
         }
         return listaB;
     }
-
+    public ArrayList<zonaVO> mostrarZonas() {
+        ArrayList<zonaVO> listaB = new ArrayList<zonaVO>();
+        zonaVO zona;
+        try {
+            Connection acceso = con.obtenerConexion();
+            PreparedStatement ps = acceso.prepareStatement("select * from zona");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                zona = new zonaVO();
+                zona.setCodigo(rs.getString(1));
+                zona.setNombre(rs.getString(2));
+                zona.setCiudad(rs.getString(3));
+                listaB.add(zona);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return listaB;
+    }
     
     public void eliminarZonaCodigo(String dni){
         try {

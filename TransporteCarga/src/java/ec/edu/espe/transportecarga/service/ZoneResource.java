@@ -12,9 +12,12 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -35,21 +38,62 @@ public class ZoneResource {
     }
 
     /**
-     * Retrieves representation of an instance of ec.edu.espe.transportecarga.service.ZoneResource
+     * Retrieves representation of an instance of
+     * ec.edu.espe.transportecarga.service.ZoneResource
+     *
      * @return an instance of ec.edu.espe.transportecarga.model.zonaVO
      */
-     //CONSULTA TODAS LAS ZONAS 
+    //CONSULTA TODAS LAS ZONAS 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<zonaVO> getJsonAnyZone() {
-       zonaDAO guia=new zonaDAO();
-       ArrayList<zonaVO> guiaVO=new ArrayList<zonaVO>();
-        guiaVO=guia.mostrarZona();
+        zonaDAO guia = new zonaDAO();
+        ArrayList<zonaVO> guiaVO = new ArrayList<zonaVO>();
+        guiaVO = guia.mostrarZona();
         return guiaVO;
+    }
+
+    @GET
+    @Path("zones")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<zonaVO> getJsonZones() {
+        //TODO return proper representation object
+        zonaDAO zona = new zonaDAO();
+        ArrayList<zonaVO> zonaVO = new ArrayList<zonaVO>();
+        zonaVO = zona.mostrarZonas();
+        return zonaVO;
+    }
+
+    @POST
+    @Path("/createZone")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void save(zonaVO data) {
+        zonaDAO response = new zonaDAO();
+        response.adicionarZona(data);
+        System.out.println(data.getCodigo());
+        System.out.println(data.getNombre());
+        System.out.println(data.getCiudad());
+    }
+
+    @DELETE
+    @Path("deleteZone/{byCode}")
+    public void remove(@PathParam("code") String code) {
+        zonaDAO response = new zonaDAO();
+        response.eliminarZonaCodigo(code);
+        System.out.println(code);
+    }
+
+    @DELETE
+    @Path("/deleteZOne/{byName}")
+    public void deleteJsonZoneByName(@PathParam("byName") String byName) {
+        zonaDAO response = new zonaDAO();
+        response.eliminarZonaNombre(byName);
+        System.out.println(byName);
     }
 
     /**
      * PUT method for updating or creating an instance of ZoneResource
+     *
      * @param content representation for the resource
      */
     @PUT
