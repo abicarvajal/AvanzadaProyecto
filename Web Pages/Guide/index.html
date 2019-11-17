@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Guides</title>
+         <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+    </head>
+    <body>
+        <div class="modal-dialog text-center">
+            <div class="col-sm-8 main-section">
+                <div class="modal-content">
+                    <div class="col-12 user-img">
+                        <img src="static/img/user.png" th:src="@{/img/user.png}"/>
+                        <label for="carga">CARGA PESADA ACME</label>
+                        <label for="client">Guia</label>
+                    </div>
+                    <form class="col-12" th:action="@{/guides}" method="get">
+                        <div class="form-group" id="user-group">
+                             <label for="cedula">Cedula:</label>
+                              <input type="text" class="form-control" placeholder="0604188086" name="username"/>
+                        </div>
+
+                        <div class="form-group" id="cedulaT-group">
+                            <label for="cedulaT">Cedula Transportista:</label>
+                            <input type="text" class="form-control" placeholder="0602175143" name="cedulaT"/>
+                        </div>
+                        <div class="form-group" id="codigoP-group">
+                            <label for="codigoP">Codigo Producto:</label>
+                            <input type="text" class="form-control" placeholder="PR761" name="codigoP"/>
+                        </div>
+
+                        <div class="form-group" id="destino-group">
+                                <label for="Destino">Destino:</label>
+                                <input type="text" class="form-control" placeholder="Quito" name="telefono"/>
+                            </div>
+                            
+                            <div class="form-group" id="direccion-group">
+                                    <label for="direccion">Direccion:</label>
+                                    <input type="text" class="form-control" placeholder="La colina" name="callep"/>
+                                </div>
+                            <div class="form-group" id="calles-group">
+                                <input type="text" class="form-control" placeholder="Loja 201" name="calles"/>
+                            </div>
+                            <div class="form-group" id="estado-group">
+                                    <label for="estado">Estado:</label>
+                                    <input type="text" class="form-control" placeholder="Activo" name="estado"/>
+                                </div>
+
+                        <div class="form-group" id="fecha-group">
+                                <label for="fecha">Fecha:</label>
+                                <input type="text" class="form-control" placeholder="10-6-2019" name="fecha"/>
+                            </div>
+                            <div class="form-group" id="numero-group">
+                                    <label for="numero">Numero:</label>
+                                    <input type="text" class="form-control" placeholder="4" name="numero"/>
+                                </div>
+                                <div class="form-group" id="valorEnvio-group">
+                                        <label for="valor">Valor Envio:</label>
+                                        <input type="text" class="form-control" placeholder="1.0" name="valor"/>
+                                    </div>
+                        
+                        
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Registrar </button>
+                    </form>
+                   
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
