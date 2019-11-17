@@ -47,17 +47,18 @@
                                 <input type="telefono" class="form-control" placeholder="0984927548" name="telefono"/>
                             </div>
                         <div class="form-group" id="correo-group">
-                            <label for="cedula">Correo:</label>
+                            <label for="correo">Correo:</label>
                             <input type="correo" class="form-control" placeholder="agcarvajal@espe.edu.ec" name="correo"/>
                         </div>
                         <div class="form-group" id="ciudad-group">
-                                <label for="cedula">Ciudad:</label>
+                                <label for="ciudad">Ciudad:</label>
                                 <input type="ciudad" class="form-control" placeholder="Quito" name="ciudad"/>
                             </div><br>
                         <div class="form-group" id="zona-group">
-                                <label for="cedula">Zona:</label>
-                                <select>
-                                        <option selected>Valle</option>
+                                <label for="zona">Zona:</label>
+                                <select class = "form-control" name = "zona">
+                                        <option value="0" selected="" disabled="">--Seleccionar--</option>
+                                        <option>Valle</option>
                                         <option>Norte</option>
                                         <option>Sur</option>
                                 </select>
@@ -85,6 +86,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="register.js"></script>  
+    <script src="validacion.js"></script>  
 </body>
 </html>

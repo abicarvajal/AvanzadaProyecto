@@ -10,12 +10,40 @@ $.validator.addMethod( "alphanumeric", function( value, element ) {
 return this.optional( element ) || /^\w+$/i.test( value );
 }, "Solo letras, números y guiones bajos" );
 
+jQuery.validator.addMethod("validaCI", function(value, element){
+        if (value != "") {
+            var i;
+            var cedula;
+            var acumulado;
+            cedula = value;
+            var instancia;
+            acumulado = 0;
+            for (i = 1; i <= 9; i++) {
+                if (i % 2 != 0) {
+                    instancia = cedula.substring(i - 1, i) * 2;
+                    if (instancia > 9) instancia -= 9;
+                } else instancia = cedula.substring(i - 1, i);
+                acumulado += parseInt(instancia);
+            }
+            while (acumulado > 0)
+                acumulado -= 10;
+            if (cedula.substring(9, 10) != (acumulado * -1)) {
+                //alert("Cédula incorrecta");
+                return value = "";
+            }
+            else{
+                return(element);
+            }
+        }
+}, "Cédula invalida"); 
+
 var $registrationForm = $('#registration');
 if($registrationForm.length){
   $registrationForm.validate({
       rules:{
           cedula: {
-              required: true
+              required: true,
+              validaCI:true
           },
           correo: {
               required: true,
@@ -33,8 +61,7 @@ if($registrationForm.length){
               noSpace: true
           },
           zona: {
-              required: true,
-              noSpace: true
+              required: true
           },
           callep: {
               required: true
@@ -48,9 +75,9 @@ if($registrationForm.length){
       },
       messages:{
           cedula: {
-              required: 'Ingrese cedula!'
+              required: 'Ingrese cedula'
           },
-          email: {
+          correo: {
               required: 'Ingrese correo',
               email: 'Ingrese un correo válido'
           },
@@ -64,7 +91,7 @@ if($registrationForm.length){
               required: 'Ingrese ciudad!'
           },
           zona: {
-              required: 'Ingrese zona!'
+              required: 'Elija una zona!'
           },
           callep: {
               required: 'Ingrese calle principal!'
