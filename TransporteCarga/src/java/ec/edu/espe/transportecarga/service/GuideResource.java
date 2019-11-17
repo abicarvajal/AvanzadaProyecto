@@ -77,7 +77,6 @@ public class GuideResource {
         return guiaVO;
     }
     @GET
-    @Path("ViewGuides")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<guiaVO> getJsonZones() {
         //TODO return proper representation object
