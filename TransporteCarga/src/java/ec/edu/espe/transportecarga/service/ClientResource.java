@@ -36,19 +36,18 @@ public class ClientResource {
      */
     public ClientResource() {
         
-        
-        
     }
  
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<clienteVO> getJsonZones() {
+    public ArrayList<clienteVO> getJsonClient() {
         //TODO return proper representation object
         clienteDAO zona = new clienteDAO();
         ArrayList<clienteVO> guiaVO = new ArrayList<clienteVO>();
         guiaVO = zona.mostrarCliente();
         return guiaVO;
     }
+    
     
     @GET
     @Path("client/{number}")
