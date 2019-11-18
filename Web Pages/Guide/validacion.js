@@ -54,6 +54,10 @@ if($registrationForm.length){
               required: true,
               noSpace:true
           },
+          codigoZ: {
+            required: true,
+            noSpace:true
+        },
           direccion: {
               required: true,
               lettersonly:true
@@ -81,6 +85,9 @@ if($registrationForm.length){
           codigoP: {
               required: 'Ingrese codigo de producto',
           },
+          codigoZ: {
+            required: 'Ingrese codigo de zona',
+        },
           direccion: {
               required: 'Ingrese direccion!'
           },
