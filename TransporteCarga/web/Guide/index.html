@@ -1,0 +1,91 @@
+<html>
+
+<head>
+    <title>Guides</title>
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+</head>
+
+<body>
+    <div class="modal-dialog text-center">
+        <div class="col-sm-8 main-section">
+            <div class="modal-content">
+                <div class="col-12 user-img">
+                    <img src="static/img/user.png" th:src="@{/img/user.png}" />
+                    <label for="carga">CARGA PESADA ACME</label>
+                    <label for="client">Guia</label>
+                </div>
+
+                <form class="col-12" id="form_datos" th:action="@{/guides}" method="get">
+                    <div class="form-group" id="user-group">
+                        <label for="cedula">Cedula:</label>
+                        <input type="text" class="form-control" placeholder="0604188086" name="cedula" id="cedula" />
+                    </div>
+                    <div class="form-group" id="cedulaT-group">
+                        <label for="cedulaT">Cedula Transportista:</label>
+                        <input type="text" class="form-control" placeholder="0602175143" name="cedulaT" id="cedulaT" />
+                    </div>
+                    <div class="form-group" id="codigoP-group">
+                        <label for="codigoP">Codigo Producto:</label>
+                        <input type="text" class="form-control" placeholder="PR761" name="codigoP" id="codigoP" />
+                    </div>
+
+                    <div class="form-group" id="destino-group">
+                        <label for="Destino">Destino:</label>
+                        <input type="text" class="form-control" placeholder="Quito" name="destino" id="destino" />
+                    </div>
+
+                    <div class="form-group" id="direccion-group">
+                        <label for="direccion">Direccion:</label>
+                        <input type="text" class="form-control" placeholder="La colina" name="direccion"
+                            id="direccion" />
+                    </div>
+                    <div class="form-group" id="estado-group">
+                        <label for="estado">Estado Reserva:</label>
+                        <select id="estado">
+                            <option value="Activo"> ACTIVO</option>
+                            <option value="Anulado"> ANULADO</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group" id="fecha-group">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" size="30" class="form-control" min="01-01-2018" name="fecha"
+                            required="true" />
+                    </div>
+                    <div class="form-group" id="numero-group">
+                        <label for="numero">Numero:</label>
+                        <input type="text" class="form-control" placeholder="4" name="numero" id="numero" required
+                            number="true" />
+                    </div>
+                    <div class="form-group" id="valorEnvio-group">
+                        <label for="valor">Valor Envio:</label>
+                        <input type="text" class="form-control" placeholder="1.0" name="valor" id="valor" required
+                            number="true" />
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Registrar </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="validacion.js"></script>
+</body>
+
+</html>
