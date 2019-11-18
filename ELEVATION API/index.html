@@ -1,0 +1,125 @@
+<html>
+
+<head>
+    <title>Elevation Api</title>
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+    <!--AXIOS-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="modal-dialog text-center">
+        <div class="col-sm-8 main-section">
+            <div class="modal-content">
+                <div class="col-12 user-img">
+                    <img src="static/img/user.png" th:src="@{/img/user.png}" />
+                    <label for="carga">Elevation API</label>
+                    <label for="client">Latitude vs Longitude</label>
+                </div>
+
+                <form class="col-12" id="location-form">
+                  <div class="form-group" id="latitud-group">
+                    <label for="latitud">Latitud:</label>
+                    <input type="text" class="form-control" placeholder="39.90974" name="latitud"
+                        id="location-input" />
+                </div>
+                <div class="form-group" id="longitud-group">
+                  <label for="longitud">Longitud:</label>
+                  <input type="text" class="form-control" placeholder="-106.17188" name="longitud"
+                      id="location-input" />
+                    
+                    <button type="submit" class="btn btn-primary"id = "Registrar" ><i class="fas fa-sign-in-alt" id = "Registrar" ></i> Registrar </button>
+                </form>
+                <div class="card-block" id="formatted-address"></div>
+                <div class="card-block" id="address-components"></div>
+                <div class="card-block" id="geometry"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script>
+            
+        document.querySelector('#Registrar').addEventListener('click',function(){
+          obtenerDatos();
+        })
+
+        function obtenerDatos(){
+          console.log('Diste clic')
+        }
+        
+        // Get location form
+        var latitudeForm = document.getElementById('latitud-group');
+        var longitudeForm = document.getElementById('longitud-group');
+        // Listen for submiot
+        
+        longitudeForm.addEventListener('submit', elevation());
+    
+        function elevation(e){
+          // Prevent actual submit
+          e.preventDefault();
+    
+          var latitud = document.getElementById('latitud-group').value;
+          var longitud = document.getElementById('longitud-group').value;
+    
+          axios.get('https://elevation-api.io/api/elevation?points=('+latitud+','+longitud+')&key=-IY7hOn-pebvpDbk4t4b2Cf0T4Wca7')
+                      
+          .then(function(response){
+            // Log full response
+            console.log(response);
+    
+            // Formatted Address
+            var formattedAddress = response.data.results[0].formatted_address;
+            var formattedAddressOutput = `
+              <ul class="list-group">
+                <li class="list-group-item">${formattedAddress}</li>
+              </ul>
+            `;
+    
+            // Address Components
+            var addressComponents = response.data.results[0].address_components;
+            var addressComponentsOutput = '<ul class="list-group">';
+            for(var i = 0;i < addressComponents.length;i++){
+              addressComponentsOutput += `
+                <li class="list-group-item"><strong>${addressComponents[i].types[0]}</strong>: ${addressComponents[i].long_name}</li>
+              `;
+            }
+            addressComponentsOutput += '</ul>';
+    
+            // Geometry
+            var lat = response.data.results[0].geometry.location.lat;
+            var lng = response.data.results[0].geometry.location.lng;
+            var geometryOutput = `
+              <ul class="list-group">
+                <li class="list-group-item"><strong>Latitude</strong>: ${lat}</li>
+                <li class="list-group-item"><strong>Longitude</strong>: ${lng}</li>
+              </ul>
+            `;
+    
+            // Output to app
+            document.getElementById('formatted-address').innerHTML = formattedAddressOutput;
+            document.getElementById('address-components').innerHTML = addressComponentsOutput;
+            document.getElementById('geometry').innerHTML = geometryOutput;
+          })
+          .catch(function(error){
+            console.log(error);
+          });
+        }
+      </script>
+</body>
+
+</html>
