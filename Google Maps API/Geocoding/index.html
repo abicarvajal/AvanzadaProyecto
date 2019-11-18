@@ -75,15 +75,18 @@
     
             // Formatted Address
             var formattedAddress = response.data.results[0].formatted_address;
+            console.log('formattedAddress: '+formattedAddress);
             var formattedAddressOutput = `
               <ul class="list-group">
                 <li class="list-group-item">${formattedAddress}</li>
               </ul>
             `;
-    
+            console.log(formattedAddressOutput);
             // Address Components
             var addressComponents = response.data.results[0].address_components;
+            console.log(addressComponents);
             var addressComponentsOutput = '<ul class="list-group">';
+            console.log(addressComponentsOutput);
             for(var i = 0;i < addressComponents.length;i++){
               addressComponentsOutput += `
                 <li class="list-group-item"><strong>${addressComponents[i].types[0]}</strong>: ${addressComponents[i].long_name}</li>
@@ -93,14 +96,16 @@
     
             // Geometry
             var lat = response.data.results[0].geometry.location.lat;
+            console.log(response.data.results[0].geometry.location.lat);
             var lng = response.data.results[0].geometry.location.lng;
+            console.log(response.data.results[0].geometry.location.lng);
             var geometryOutput = `
               <ul class="list-group">
                 <li class="list-group-item"><strong>Latitude</strong>: ${lat}</li>
                 <li class="list-group-item"><strong>Longitude</strong>: ${lng}</li>
               </ul>
             `;
-    
+            console.log(geometryOutput); 
             // Output to app
             document.getElementById('formatted-address').innerHTML = formattedAddressOutput;
             document.getElementById('address-components').innerHTML = addressComponentsOutput;

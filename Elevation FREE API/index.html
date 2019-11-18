@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <title>Elevation</title>
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+    <!--AXIOS-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-dialog text-center">
+        <div class="col-sm-8 main-section">
+            <div class="modal-content">
+                <div class="col-12 user-img">
+                    <div class="col-12 user-img">
+                        <img src="static/img/user.png" th:src="@{/img/user.png}" />
+                        <label for="carga">Elevation Free API</label>
+                        <label for="client">Elevation</label>
+                    </div>
+                    <form class="col-12" id="location-form" th:action="@{/elevations}" method="get">
+
+                        <div class="form-group" id="lat-group">
+                            <label for="lat">Latitude:</label>
+                            <input type="text" class="form-control" placeholder="33.48" name="lat" id="lat" />
+                        </div>
+                        <div class="form-group" id="lon-group">
+                            <label for="lon">Longitude:</label>
+                            <input type="text" class="form-control" placeholder="73.48" name="lon" id="lon" />
+                        </div>
+                        <button type="submit" class="btn" id="Registrar"><i class="fas fa-sign-in-alt"></i> Registrar
+                        </button>
+
+                    </form>
+                    <div class="card-block" id="elevationMed"></div>
+                    <div class="card-block" id="existente"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var locationForm = document.getElementById('location-form');
+
+            // Listen for submiot
+            locationForm.addEventListener('submit', geocode);
+
+
+            function geocode(e) {
+                // Prevent actual submit
+                e.preventDefault();
+
+                var longitude = document.getElementById('lat').value;
+                var latitude = document.getElementById('lon').value;
+                var point = longitude + ',' + latitude;
+                console.log(longitude);
+                console.log(latitude);
+                console.log(point);
+                axios.get('https://elevation-api.io/api/elevation?points=(' + longitude + ',' + latitude + ')&key=-IY7hOn-pebvpDbk4t4b2Cf0T4Wca7')
+                    .then(function (response) {
+                        // Log full response
+                        console.log(response);
+                        // Formatted Address                
+                        var elevationMed = response.data.elevations[0].elevation;
+                        console.log(elevationMed);
+                        var elevationMedOutput = '<div class="form-group" id="elevation-group"> <label for="elevation">Elevation:</label> <input class="form-control" id="elevation" value=' + elevationMed + ' /> </div>';
+                        document.getElementById('elevationMed').innerHTML = elevationMedOutput;
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="validacion.js"></script>
+</body>
+
+</html>
