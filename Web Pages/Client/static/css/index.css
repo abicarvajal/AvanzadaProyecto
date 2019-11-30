@@ -69,3 +69,8 @@ button{
     font-size: 18px;
     text-align: left;
 }
+
+.error {
+            color: red;
+            font-style: italic;
+}
