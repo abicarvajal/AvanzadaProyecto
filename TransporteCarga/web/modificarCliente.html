@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Cliente </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+</head>
+
+<body>
+    <div class="modal-dialog text-center">
+        <div class="main-section">
+            <div class="modal-content">
+                <div class="col-12 user-img">
+                    <img src="static/img/user.png" th:src="@{/img/user.png}" /><br>
+                    <label for="carga">CARGA PESADA ACME</label><br><br>
+                    <label for="client">Modificar Cliente</label>
+                </div>
+                <div class="panel-body">
+                        <table class="table table-striped">
+                                <thead>
+                                  <tr>
+								      <th scope="col">#</th>
+								      <th scope="col">Cedula</th>
+								      <th scope="col">Nombre</th>
+								      <th scope="col">Celular</th>
+								      <th scope="col">Correo</th>
+								      <th scope="col">Zona</th>
+								      <th scope="col">Calle Princiapl</th>
+								      <th scope="col">Calle Secundaria</th>
+								      <th scope="col">Lote</th>
+						    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                              </table>
+                              <br>
+                              <br>
+                              <br>
+
+                
+                    <form id="registration">
+                  
+						 <div class="form-group" id="user-group">
+                            <label for="zona">Cedula:</label>
+                            <select class="form-control" name="zona">
+                                <option value="0" selected="" disabled="">--Seleccionar--</option>
+                            </select>
+                        </div><br>
+
+
+
+                            <input type="text" class="form-control" placeholder="1720980067" name="cedula" />
+                        </div>
+                        <div class="form-group" id="nombre-group">
+                            <label for="cedula">Nombre:</label>
+                            <input type="nombre" class="form-control" placeholder="María" name="nombre" />
+                        </div>
+                        <div class="form-group" id="telefono-group">
+                            <label for="cedula">Teléfono:</label>
+                            <input type="telefono" class="form-control" placeholder="0984927548" name="telefono" />
+                        </div>
+                        <div class="form-group" id="correo-group">
+                            <label for="correo">Correo:</label>
+                            <input type="correo" class="form-control" placeholder="agcarvajal@espe.edu.ec"
+                                name="correo" />
+                        </div>
+                        <div class="form-group" id="ciudad-group">
+                            <label for="ciudad">Ciudad:</label>
+                            <input type="ciudad" class="form-control" placeholder="Quito" name="ciudad" />
+                        </div><br>
+                        <div class="form-group" id="zona-group">
+                            <label for="zona">Zona:</label>
+                            <select class="form-control" name="zona">
+                                <option value="0" selected="" disabled="">--Seleccionar--</option>
+                                <option value="Guayaquil"> GUAYQUIL</option>
+                                <option value="Cuenca"> CUENCA</option>
+                                <option value="Santo Domingo"> SANTO DOMINGO</option>
+                            </select>
+                        </div><br>
+
+                        <div class="form-group" id="callep-group">
+                            <label for="cedula">Calle Principal:</label>
+                            <input type="callep" class="form-control" placeholder="Calle Principal" name="callep" />
+                        </div>
+                        <div class="form-group" id="calles-group">
+                            <label for="cedula">Calle Secundaria:</label>
+                            <input type="calles" class="form-control" placeholder="Calle Secundaria" name="calles" />
+                        </div>
+                        <div class="form-group" id="lote-group">
+                            <label for="cedula">Lote:</label>
+                            <input type="lote" class="form-control" placeholder="Lote" name="lote" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Modificar</button>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="validacionGuide.js"></script>
+</body>
+
+</html>
