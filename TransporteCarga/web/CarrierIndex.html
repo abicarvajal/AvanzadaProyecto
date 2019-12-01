@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>Index Carrier</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+    <style>
+        .error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-dialog text-center">
+        <div class="col-sm-8 main-section">
+            <div class="modal-content">
+                <div class="col-12 user-img">
+                    <img src="static/img/zona.png" th:src="@{/img/zona.png}" />
+                    <label id="heading">CARGA PESADA ACME</label><br><br>
+                    <label id="heading2">Menú Transportista</label><br><br>
+                    <img src="../src/java/Imagenes/creart.png"
+                        th:src="@{/java/Imagenes/creart.png}" /><br>
+                    <div class="form-group" id="RegistrarTransportista-group">
+                        <a href="Trans.html">REGISTRAR TRANSPORTISTA</a> <br>
+                    </div>
+                    <img src="../src/java/Imagenes/eliminarT.png"
+                        th:src="@{/java/Imagenes/eliminarT.png}" /><br>
+                    <div class="form-group" id="EliminarTransportista-group">
+                        <a href="Trans.html">ELIMINAR TRANSPORTISTA</a> <br>
+                    </div>
+                    <img src="../src/java/Imagenes/modificarT.png"
+                        th:src="@{/java/Imagenes/modificarT.png}" /><br>
+                    <div class="form-group" id="ModificarTransportista-group">
+                        <a href="Trans.html">MODIFICAR TRANSPORTISTA</a> <br>
+                    </div>
+                    <img src="../src/java/Imagenes/imprimir.png"
+                        th:src="@{/java/Imagenes/imprimir.png}" /><br>
+                    <div class="form-group" id="BuscarTransportista-group">
+                        <a href="Trans.html">BUSCAR TRANSPORTISTA</a> <br>
+                    </div>
+
+
+                </div><br>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
