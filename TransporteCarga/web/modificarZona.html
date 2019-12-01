@@ -1,7 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Registro Zona</title>
+    <title> Zona </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
@@ -16,29 +17,48 @@
 
     <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
-    <style>
-        .error {
-            color: red;
-            font-style: italic;
-        }
-    </style>
-
 </head>
 
 <body>
     <div class="modal-dialog text-center">
-        <div class="col-sm-8 main-section">
+        <div class="main-section">
             <div class="modal-content">
                 <div class="col-12 user-img">
                     <img src="static/img/zona.png" th:src="@{/img/zona.png}" /><br>
-                    <label id="heading">CARGA PESADA ACME</label>
-                    <label id="heading2">Registro de Zona</label>
+                    <label for="carga">CARGA PESADA ACME</label><br><br>
+                    <label for="client">Modificar Zona</label>
                 </div>
+                <div class="panel-body">
+                        <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">Codigo</th>
+                                      <th scope="col">Ciudad</th>
+                                      <th scope="col">Nombre</th>
+
+						    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                              </table>
+                              <br>
+                              <br>
+                              <br>
+
+
+
+
                 <form class="col-12" id="form_datos" th:action="@{/zones}" method="get">
-                    <div class="form-group" id="codigoZ-group">
-                        <label for="codigoZ">Codigo Zona:</label>
-                        <input type="text" class="form-control" placeholder="PR761" name="codigoZ" id="codigoZ" />
-                    </div>
+
+                    <div class="form-group" id="user-group">
+                            <label for="zona">Codigo Zona:</label>
+                            <select class="form-control" name="zona">
+                                <option value="0" selected="" disabled="">--Seleccionar--</option>
+                            </select>
+                        </div><br>
+
                     <div class="form-group" id="ciudad-group">
                         <label for="ciudadZ">Nombre de la Ciudad:</label>
                         <select size="5" class="form-control" name="ciudadZ">
@@ -73,13 +93,15 @@
 
                     <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Registrar </button>
                 </form>
+
+                </div>
             </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="validacion.js"></script>
+    <script src="validacionGuide.js"></script>
 </body>
 
 </html>
