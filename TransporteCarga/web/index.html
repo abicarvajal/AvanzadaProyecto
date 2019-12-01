@@ -32,30 +32,37 @@ and open the template in the editor.
 
 <body>
     <div class="modal-dialog text-center">
-        <div class="col-sm-8 main-section">
+        <div class="main-section">
             <div class="modal-content">
                 <div class="col-12 user-img">
-                    <img src="static/img/TransporteCargaPesada.png" th:src="@{/img/TransporteCargaPesada.png}" />
+                    <img src="static/img/TransporteCargaPesada.png" th:src="@{/img/TransporteCargaPesada.png}" /><br>
                     <label id="heading">CARGA PESADA ACME</label><br><br>
                     <label id="heading2">Menú</label><br><br>
-                    <div class="form-group" id="registrarCliente-group">
-                        <a href="client.html">REGISTRAR CLIENTE</a> <br>
-                    </div>
-                    <div class="form-group" id="registrarGuía-group">
-                        <a href="guide.html">REGISTRAR GUÍA</a> <br>
-                    </div>
-                    <div class="form-group" id="RegistrarTransportista-group">
-                        <a href="Trans.html">REGISTRAR TRANSPORTISTA</a> <br>
-                    </div>
-                    <div class="form-group" id="RegistrarZona-group">
-                        <a href="zone.html">REGISTRAR ZONA</a> <br>
-                    </div>
+
+                    <form class="col-12" id="form_datos" th:action="@{/zones}" method="get">
+                        <div class="form-group" id="login-group">
+                            <label for="login"> Login</label>
+                            <input type="text" class="form-control" placeholder="admin" name="login" id="login" />
+                        </div>
+                        <div class="form-group" id="password-group">
+                            <label for="password">Password</label>
+                            <input type="text" class="form-control" placeholder="admin" name="password" id="password"
+                                required="true" />
+                        </div>
+                    </form>
 
 
 
-                </div><br>
+
+                </div>
             </div>
-        </div>
+
+
+
+
+        </div><br>
+    </div>
+    </div>
     </div>
 
 
