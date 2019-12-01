@@ -199,10 +199,10 @@ public class transportistaDAO {
     public void eliminarTranportistaIdentificacion(String dni){
         try {
             Connection accesoDB = con.obtenerConexion();
-            PreparedStatement ps= accesoDB.prepareStatement("DELETE from transportista where identificacion=" +dni);
+            PreparedStatement ps= accesoDB.prepareStatement("DELETE from transportista where identificacion='" +dni+"'");
             ps.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e);
+         //   System.out.println(e);
         }
         
     }
@@ -240,9 +240,9 @@ public class transportistaDAO {
             PreparedStatement ps= acceso.prepareStatement("UPDATE transportista SET nombre='" +cli.getNombre()+"', direccion='"+cli.getDireccion()
                     +"', telefono='"+cli.getTelefono()+"', correo='"+cli.getCorreo()+"', placa='"+cli.getPlaca()+"', zona='"+cli.getZona()+"'WHERE identificacion='"+cli.getIdentificacion()+"'" );
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Modificacion Exitosa");
+            //JOptionPane.showMessageDialog(null, "Modificacion Exitosa");
         }catch(SQLException ex){
-            System.out.println(ex);
+            //System.out.println(ex);
         }
     }
     
