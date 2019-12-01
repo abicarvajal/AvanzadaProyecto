@@ -49,6 +49,7 @@ body{
     left: 28px;
     font-size: 16px;
     padding-top:4px;
+      
 }
 
 button{
@@ -72,4 +73,8 @@ button{
 .error{
     color: red;
     font-style: italic;
+}
+
+.form-group a{
+    color:red;
 }
