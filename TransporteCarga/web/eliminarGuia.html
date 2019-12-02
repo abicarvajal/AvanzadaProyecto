@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title> Guias </title>
+    <title> Guia </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
@@ -26,10 +26,10 @@
                 <div class="col-12 user-img">
                     <img src="static/img/guide.png" th:src="@{/img/guide.png}" /><br>
                     <label for="carga">CARGA PESADA ACME</label><br><br>
-                    <label for="client">Mostrar Guias</label>
+                    <label for="client">Eliminar Guias</label>
                 </div>
                 <div class="panel-body">
-                        <table class="table table-striped" id="tabla">
+                        <table class="table table-striped">
                                 <thead>
                                   <tr>
                                     <th scope="col">#</th>
@@ -41,13 +41,26 @@
                                     <th scope="col">Destino</th>
                                     <th scope="col">Direccion</th>
                                     <th scope="col">Estado Reserva</th>
-                                  </tr>
+						    </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
                                     
                                 </tbody>
                               </table>
+                              <br>
+                              <br>
+                              <br>
+
+                <div>
+                    <label for="client">Escriba el numero de guia que desea eliminar:</label>
+                    <input type="text" name="cedula">
+                	<br>
+                	<br>
+					  <button type="submit" class="btn btn-primary">Eliminar</button>
+                </div>
+
+
+
                 </div>
             </div>
         </div>

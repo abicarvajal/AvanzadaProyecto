@@ -68,7 +68,7 @@ public class GuideResource {
     }
     //CONSULTA GUIA POR TRANSPORTISTA (cedula)
     @GET
-    @Path("/orders/carrier/{IDcarrier}")
+    @Path("/orders/carriers/{IDcarrier}")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<guiaVO> getJsonGuidesByCarrier(@PathParam("IDcarrier") String IDcarrier) {
        guiaDAO guia=new guiaDAO();
@@ -87,13 +87,23 @@ public class GuideResource {
     }
 
     @GET
-    @Path("guide/{number}")
+    @Path("orders/{number}")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<guiaVO> getJsonGuide(@PathParam("number") String number) {
         //TODO return proper representation object
         guiaDAO guiaDAO = new guiaDAO();
         ArrayList<guiaVO> guiaVO = new ArrayList<guiaVO>();
         guiaVO = guiaDAO.mostrarGuia(number);
+        return guiaVO;
+    }
+    @GET
+    @Path("orders/status/{IDstatus}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<guiaVO> getJsonGuideByEstate(@PathParam("IDstatus") String status) {
+        //TODO return proper representation object
+        guiaDAO guiaDAO = new guiaDAO();
+        ArrayList<guiaVO> guiaVO = new ArrayList<guiaVO>();
+        guiaVO = guiaDAO.mostrarGuiaPorEstados(status);
         return guiaVO;
     }
 

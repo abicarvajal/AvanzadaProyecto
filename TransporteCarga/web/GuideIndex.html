@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
 
 <head>
-    <title>Index Transporte Carga</title>
+    <title>Index Guide</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
@@ -32,37 +32,33 @@ and open the template in the editor.
 
 <body>
     <div class="modal-dialog text-center">
-        <div class="main-section">
+        <div class="col-sm-8 main-section">
             <div class="modal-content">
                 <div class="col-12 user-img">
-                    <img src="static/img/TransporteCargaPesada.png" th:src="@{/img/TransporteCargaPesada.png}" /><br>
+                    <img src="static/img/zona.png" th:src="@{/img/zona.png}" />
                     <label id="heading">CARGA PESADA ACME</label><br><br>
-                    <label id="heading2">Menú</label><br><br>
+                    <label id="heading2">Menú Guia</label><br><br>
+                    <img src="../src/java/Imagenes/crearguiar.png"
+                        th:src="@{/java/Imagenes/crearguiar.png}" /><br>
+                    <div class="form-group" id="RegistrarGuia-group">
+                        <a href="guide.html">CREAR GUÍA</a> <br>
+                    </div>
+                    <img src="../src/java/Imagenes/imprimir.png"
+                        th:src="@{/java/Imagenes/imprimir.png}" /><br>
+                    <div class="form-group" id="ImprimirGuia-group">
+                        <a href="imprimitGuia.html">IMPRIMIR GUÍA</a> <br>
+                    </div>
+                    <img src="../src/java/Imagenes/1-1.png"
+                        th:src="@{/java/Imagenes/1-1.png}" /><br>
+                    <div class="form-group" id="AnularGuia-group">
+                        <a href="eliminarGuia.html">ANULAR GUÍA</a> <br>
+                    </div>
 
-                    <form class="col-12" id="form_datos" th:action="@{/zones}" method="get">
-                        <div class="form-group" id="login-group">
-                            <label for="login"> Login</label>
-                            <input type="text" class="form-control" placeholder="admin" name="login" id="login" />
-                        </div>
-                        <div class="form-group" id="password-group">
-                            <label for="password">Password</label>
-                            <input type="text" class="form-control" placeholder="admin" name="password" id="password"
-                                required="true" />
-                        </div>
-                    </form>
 
 
-
-
-                </div>
+                </div><br>
             </div>
-
-
-
-
-        </div><br>
-    </div>
-    </div>
+        </div>
     </div>
 
 

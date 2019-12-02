@@ -24,12 +24,16 @@
         <div class="col-sm-8 main-section">
             <div class="modal-content">
                 <div class="col-12 user-img">
-                    <img src="static/img/user.png" th:src="@{/img/guide.png}" />
+                    <img src="static/img/guide.png" th:src="@{/img/guide.png}" />
                     <label for="carga">CARGA PESADA ACME</label>
-                    <label for="client">Guia</label>
+                    <label for="client">Registro de Guia</label>
                 </div>
 
                 <form class="col-12" id="form_datos" th:action="@{/guides}" method="get">
+                    <div class="form-group" id="num-group">
+                        <label for="numGuia">Numero Guia:</label>
+                        <input type="text" class="form-control" placeholder="1" name="numGuia" id="numGuia" />
+                    </div>
                     <div class="form-group" id="user-group">
                         <label for="cedula">Cedula:</label>
                         <input type="text" class="form-control" placeholder="0604188086" name="cedula" id="cedula" />

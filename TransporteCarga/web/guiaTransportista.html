@@ -26,9 +26,15 @@
                 <div class="col-12 user-img">
                     <img src="static/img/guide.png" th:src="@{/img/guide.png}" /><br>
                     <label for="carga">CARGA PESADA ACME</label><br><br>
-                    <label for="client">Mostrar Guias</label>
+                    <label for="client">Consulta Guias Por Fecha</label>
                 </div>
                 <div class="panel-body">
+                        <div class="form-group" id="cedulaT-group">
+                                <label for="cedulaT">Cedula Transportista:</label>
+                                <input type="text" class="form-control" placeholder="0602175143" name="cedulaT" id="cedulaT" />
+                            </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Buscar </button>
+                    
                         <table class="table table-striped" id="tabla">
                                 <thead>
                                   <tr>

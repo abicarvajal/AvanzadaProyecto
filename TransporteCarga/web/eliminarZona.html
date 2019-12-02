@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title> Guias </title>
+    <title> Zona </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
@@ -24,30 +24,38 @@
         <div class="main-section">
             <div class="modal-content">
                 <div class="col-12 user-img">
-                    <img src="static/img/guide.png" th:src="@{/img/guide.png}" /><br>
+                    <img src="static/img/zona.png" th:src="@{/img/zona.png}" /><br>
                     <label for="carga">CARGA PESADA ACME</label><br><br>
-                    <label for="client">Mostrar Guias</label>
+                    <label for="client">Eliminar Zonas</label>
                 </div>
                 <div class="panel-body">
-                        <table class="table table-striped" id="tabla">
+                        <table class="table table-striped">
                                 <thead>
                                   <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Fecha</th>
-                                    <th scope="col">Cedula Cliente</th>
-                                    <th scope="col">Cedula Transportista</th>
-                                    <th scope="col">Codigo Producto</th>
-                                    <th scope="col">Valor Envio</th>
-                                    <th scope="col">Destino</th>
-                                    <th scope="col">Direccion</th>
-                                    <th scope="col">Estado Reserva</th>
-                                  </tr>
+						      <th scope="col">#</th>
+						      <th scope="col">Codigo</th>
+						      <th scope="col">Ciudad</th>
+						      <th scope="col">Nombre</th>
+						    </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
                                     
                                 </tbody>
                               </table>
+                              <br>
+                              <br>
+                              <br>
+
+                    <div>
+                    <label for="zone">Escriba el código de la zona que desea eliminar:</label>
+                    <input type="text" name="codigo">
+                	<br>
+                	<br>
+					  <button type="submit" class="btn btn-primary">Eliminar</button>
+                </div>
+
+
+
                 </div>
             </div>
         </div>

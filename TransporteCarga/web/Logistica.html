@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
 
 <head>
-    <title>Index Transporte Carga</title>
+    <title>Index Logistica</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
@@ -37,17 +37,18 @@ and open the template in the editor.
                 <div class="col-12 user-img">
                     <img src="static/img/TransporteCargaPesada.png" th:src="@{/img/TransporteCargaPesada.png}" /><br>
                     <label id="heading">CARGA PESADA ACME</label><br><br>
-                    <label id="heading2">Menú</label><br><br>
+                    <label id="heading2">Logística</label><br><br>
 
                     <form class="col-12" id="form_datos" th:action="@{/zones}" method="get">
-                        <div class="form-group" id="login-group">
-                            <label for="login"> Login</label>
-                            <input type="text" class="form-control" placeholder="admin" name="login" id="login" />
+                        <img src="../src/java/Imagenes/transportista.png"
+                        th:src="@{/java/Imagenes/transportista.png}" /><br>
+                        <div class="form-group" id="CarrierIndex-group">
+                            <a href="CarrierIndex.html">TRANPORTISTAS</a> <br>
                         </div>
-                        <div class="form-group" id="password-group">
-                            <label for="password">Password</label>
-                            <input type="text" class="form-control" placeholder="admin" name="password" id="password"
-                                required="true" />
+                        <img src="../src/java/Imagenes/gps.png"
+                        th:src="@{/java/Imagenes/gps.png}" /><br>
+                        <div class="form-group" id="ZoneIndex-group">
+                            <a href="indexZone.html">ZONAS</a> <br>
                         </div>
                     </form>
 

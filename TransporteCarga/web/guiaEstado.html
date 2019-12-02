@@ -26,9 +26,19 @@
                 <div class="col-12 user-img">
                     <img src="static/img/guide.png" th:src="@{/img/guide.png}" /><br>
                     <label for="carga">CARGA PESADA ACME</label><br><br>
-                    <label for="client">Mostrar Guias</label>
+                    <label for="client">Consulta Guias Por Fecha</label>
                 </div>
                 <div class="panel-body">
+                        <div class="form-group" id="estado-group">
+                                <label for="estado">Estado Reserva:</label>
+                                <select id="estado">
+                                    <option value="Activo"> ACTIVO</option>
+                                    <option value="Anulado"> ANULADO</option>
+                                </select>
+        
+                            </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Buscar </button>
+                    
                         <table class="table table-striped" id="tabla">
                                 <thead>
                                   <tr>

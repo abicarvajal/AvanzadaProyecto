@@ -42,6 +42,10 @@ var $registrationForm = $('#form_datos');
 if($registrationForm.length){
   $registrationForm.validate({
       rules:{
+        numGuia:{
+            required: true,
+            noSpace:true
+        },
           cedula: {
               required: true,
               validaCI:true
