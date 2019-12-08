@@ -12,6 +12,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.ProcessBuilder.Redirect.*;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.util.List;
+import java.lang.reflect.Type ;
 
 
 /**
@@ -42,6 +57,82 @@ public class transportistaDAO {
         }
     }
 
+    public void setServices(transportistaVO transportista) throws IOException {
+        
+        try {
+            String url = "http://localhost:8080/Clientes/Homework/Carrier/createCarrier";
+            
+            Gson gson = new Gson();
+            String JSON = gson.toJson(transportista);
+            
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            
+            con.setRequestMethod("POST");
+            con.setRequestProperty("User-Agent", "Mozilla/5.0");
+            
+            con.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+            wr.writeBytes(JSON);
+            wr.flush();
+            wr.close();
+        
+            int responseCode = con.getResponseCode();
+            System.out.println("\nSending 'POST' request to URL : " + url);
+            System.out.println("Response Code : " + responseCode);
+            
+            
+            System.out.println("Response Body : ");
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            
+      } catch (MalformedURLException ex) {
+            Logger.getLogger(transportistaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ProtocolException ex) {
+            Logger.getLogger(transportistaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(transportistaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
+    }
+    
+    public ArrayList<transportistaVO> getServices() throws IOException {
+        ArrayList<transportistaVO> services = null;
+        try {
+            String url = "http://localhost:8080/TransporteCarga/Acme/Carriers";
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("User-Agent", "Mozilla/5.0");
+            int responseCode = con.getResponseCode();
+            System.out.println("\nSending 'GET' request to URL : " + url);
+            System.out.println("Response Code : " + responseCode);
+            Type tipoListaServicios = new TypeToken<List<transportistaVO>>() {}.getType();
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            services = new Gson().fromJson(response.toString(), tipoListaServicios);
+      } catch (MalformedURLException ex) {
+            Logger.getLogger(transportistaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ProtocolException ex) {
+            Logger.getLogger(transportistaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(transportistaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return services;
+    }
+    
     public boolean buscarClienteIdentificacion(transportistaVO transportista){
         boolean band = false;
         Connection acceso = con.obtenerConexion();
