@@ -44,8 +44,9 @@ public class UserResource {
     @GET
     @Path("/users/data/{login}/{password}")
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<usuarioVO> getJsonUser(@PathParam("login") String login, @PathParam("login") String passw) {
-       usuarioDAO guia=new usuarioDAO();
+    public ArrayList<usuarioVO> getJsonUser(@PathParam("login") String login, @PathParam("password") String passw) {
+       System.out.println("pass: "+passw);
+        usuarioDAO guia=new usuarioDAO();
        ArrayList<usuarioVO> usuarioVO=new ArrayList<usuarioVO>();
         usuarioVO=guia.mostrarTipoUsuario(login,passw);
         return usuarioVO;

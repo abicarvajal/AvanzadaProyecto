@@ -6,80 +6,80 @@ and open the template in the editor.
 -->
 <html>
 
-<head>
-    <title>Index Transporte Carga</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <head>
+        <title>Index Transporte Carga</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <!-- Los iconos tipo Solid de Fontawesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <!-- Los iconos tipo Solid de Fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <!-- Nuestro css-->
+        <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
 
-</head>
+    </head>
 
-<body>
-    <div class="modal-dialog text-center">
-        <div class="main-section">
-            <div class="modal-content">
-                <div class="col-12 user-img">
-                    <img src="static/img/TransporteCargaPesada.png" th:src="@{/img/TransporteCargaPesada.png}" /><br>
-                    <label id="heading">CARGA PESADA ACME</label><br><br>
-                    <label id="heading2">Menú</label><br><br>
+    <body>
+        <div class="modal-dialog text-center">
+            <div class="main-section">
+                <div class="modal-content">
+                    <div class="col-12 user-img">
+                        <img src="static/img/TransporteCargaPesada.png" th:src="@{/img/TransporteCargaPesada.png}" /><br>
+                        <label id="heading">CARGA PESADA ACME</label><br><br>
+                        <label id="heading2">Menú</label><br><br>
 
-                    <form class="col-12" id="form_datos" th:action="@{/zones}" method="get">
-                        <div class="form-group" id="login-group">
-                            <label for="login"> Login</label>
-                            <input type="text" class="form-control" placeholder="admin" name="login" id="login" />
-                        </div>
-                        <div class="form-group" id="password-group">
-                            <label for="password">Password</label>
-                            <input type="text" class="form-control" placeholder="admin" name="password" id="password"
-                                required="true" />
-                        </div>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Logear
-                        </button>
-                    </form>
-
-
+                        <form class="col-12" id="form_datos" th:action="@{/zones}" method="get">
+                            <div class="form-group" id="login-group">
+                                <label for="login"> Login</label>
+                                <input type="text" class="form-control" placeholder="admin" name="login" id="login" />
+                            </div>
+                            <div class="form-group" id="password-group">
+                                <label for="password">Password</label>
+                                <input type="text" class="form-control" placeholder="admin" name="password" id="password"
+                                       required="true" />
+                            </div>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Logear
+                            </button>
+                        </form>
 
 
+
+
+                    </div>
                 </div>
-            </div>
 
 
 
 
-        </div><br>
+            </div><br>
+        </div>
     </div>
-    </div>
-    </div>
-    <script>
-        var locationForm = document.getElementById('form_datos');
+</div>
+<script>
+    var locationForm = document.getElementById('form_datos');
 
-        // Listen for submiot
-        locationForm.addEventListener('submit', geocode);
-
-
-        function geocode(e) {
-            // Prevent actual submit
-            e.preventDefault();
-
-            var login = document.getElementById('login').value;
-            var password = document.getElementById('password').value;
-            var tipoU;
-            console.log(login);
-            console.log(password);
+    // Listen for submiot
+    locationForm.addEventListener('submit', geocode);
 
 
-            axios.get('http://localhost:8080/TransporteCarga/Acme/Users/users/data/' +
+    function geocode(e) {
+        // Prevent actual submit
+        e.preventDefault();
+
+        var login = document.getElementById('login').value;
+        var password = document.getElementById('password').value;
+        var tipoU;
+        console.log(login);
+        console.log(password);
+
+
+        axios.get('http://localhost:8080/TransporteCarga/Acme/Users/users/data/' +
                 login + '/' + password)
                 .then(function (response) {
                     // Log full response
@@ -89,21 +89,25 @@ and open the template in the editor.
                     // Formatted Address                
                     //alert("dato Registrado");
                     if (tipoU == 1) {
+
+                        window.location.replace('http://localhost:8080/TransporteCarga/Administrador.html');
                         alert("Admin Encontrado");
                     } else if (tipoU == 2) {
-                        alert("Usuario no encontrado");
-                    }else{
+
+                        window.location.replace('http://localhost:8080/TransporteCarga/Logistica.html');
+                        alert("Usuario encontrado");
+                    } else {
                         alert("Usuario no encontrado");
                     }
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-            
 
 
-        }
-    </script>
+
+    }
+</script>
 
 
 </body>
