@@ -353,11 +353,12 @@ public class clienteDAO {
                     +"', correo='"+cli.getCorreo()+"', ciudad='"+cli.getCiudad()+"', zona='"+cli.getZona()
                     +"', calleP='"+cli.getCalleP()+"', calleS='"+cli.getCalleS()+"', lote='"+cli.getLote()+"'WHERE identificacion='"+cli.getIdentificacion()+"'" );
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Modificacion Exitosa");
         }catch(SQLException ex){
             System.out.println(ex);
         }
     }
+    
+    
     
     public void modificarNombbre(clienteVO cli){
         try{

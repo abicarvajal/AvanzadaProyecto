@@ -13,15 +13,10 @@
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
-    <style>
-        .error {
-            color: red;
-            font-style: italic;
-        }
-    </style>
+    
 
 </head>
 
@@ -41,7 +36,7 @@
                     </div>
                     <div class="form-group" id="ciudad-group">
                         <label for="ciudadZ">Nombre de la Ciudad:</label>
-                        <select size="5" class="form-control" name="ciudadZ">
+                        <select size="5" class="form-control" name="ciudadZ" id="ciudadZ">
                             <option value="0" selected="" disabled="">--Seleccionar--</option>
                             <option value="Guayaquil"> GUAYQUIL</option>
                             <option value="Cuenca"> CUENCA</option>
@@ -64,10 +59,10 @@
                             <option value="Latacunga"> LATACUNGA</option>
                         </select>
                         <div class="form-group" id="nombreZ-group">
-                        <label for="nombreZ">Nombre de la Zona:</label>
-                        <input type="text" class="form-control" placeholder="Valle de los Chillos" name="nombreZ"
-                            id="nombreZ" required="true" />
-                    </div>
+                            <label for="nombreZ">Nombre de la Zona:</label>
+                            <input type="text" class="form-control" placeholder="Valle de los Chillos" name="nombreZ"
+                                id="nombreZ" required="true" />
+                        </div>
 
                     </div><br>
 
@@ -76,6 +71,42 @@
             </div>
         </div>
     </div>
+    <script>
+        var locationForm = document.getElementById('form_datos');
+
+        // Listen for submiot
+        locationForm.addEventListener('submit', geocode);
+
+
+        function geocode(e) {
+            // Prevent actual submit
+            e.preventDefault();
+
+            var codigoZ = document.getElementById('codigoZ').value;
+            var ciudadZ = document.getElementById('ciudadZ').value;
+            var nombreZ = document.getElementById('nombreZ').value;
+
+            
+            axios.post('http://localhost:8080/TransporteCarga/Acme/Zone/createZone', 
+            {
+                ciudad: ciudadZ,
+                codigo: codigoZ,
+                nombre: nombreZ
+
+            })
+                .then(function (response) {
+                    // Log full response
+                    console.log(response);
+                    // Formatted Address                
+                    alert("dato Registrado");
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

@@ -35,19 +35,5 @@ public class DepartmentResource {
      * Retrieves representation of an instance of ec.edu.espe.transportecarga.service.DepartmentResource
      * @return an instance of ec.edu.espe.transportecarga.model.DepartamentoVO
      */
-    @GET
-    @Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-    public DepartamentoVO getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * PUT method for updating or creating an instance of DepartmentResource
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-    public void putJson(DepartamentoVO content) {
-    }
+    
 }

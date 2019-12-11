@@ -19,15 +19,10 @@ and open the template in the editor.
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
-    <style>
-        .error {
-            color: red;
-            font-style: italic;
-        }
-    </style>
+
 </head>
 
 <body>
@@ -49,6 +44,8 @@ and open the template in the editor.
                             <input type="text" class="form-control" placeholder="admin" name="password" id="password"
                                 required="true" />
                         </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Logear
+                        </button>
                     </form>
 
 
@@ -64,7 +61,49 @@ and open the template in the editor.
     </div>
     </div>
     </div>
+    <script>
+        var locationForm = document.getElementById('form_datos');
 
+        // Listen for submiot
+        locationForm.addEventListener('submit', geocode);
+
+
+        function geocode(e) {
+            // Prevent actual submit
+            e.preventDefault();
+
+            var login = document.getElementById('login').value;
+            var password = document.getElementById('password').value;
+            var tipoU;
+            console.log(login);
+            console.log(password);
+
+
+            axios.get('http://localhost:8080/TransporteCarga/Acme/Users/users/data/' +
+                login + '/' + password)
+                .then(function (response) {
+                    // Log full response
+                    console.log(response);
+                    tipoU = response.data[0].tipo;
+                    console.log("tipo: " + tipoU);
+                    // Formatted Address                
+                    //alert("dato Registrado");
+                    if (tipoU == 1) {
+                        alert("Admin Encontrado");
+                    } else if (tipoU == 2) {
+                        alert("Usuario no encontrado");
+                    }else{
+                        alert("Usuario no encontrado");
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            
+
+
+        }
+    </script>
 
 
 </body>

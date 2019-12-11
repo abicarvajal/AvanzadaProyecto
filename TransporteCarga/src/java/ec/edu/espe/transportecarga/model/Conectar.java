@@ -42,6 +42,8 @@ public class Conectar {
     public static void main(String[] args) {
         Conectar c = new Conectar();
         c.getConexion();
+        
+        
     }
     
 }
