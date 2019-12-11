@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
 </head>
@@ -34,8 +35,8 @@
                                   <tr>
 						      
 						      <th scope="col">Codigo</th>
-						      <th scope="col">Ciudad</th>
 						      <th scope="col">Nombre</th>
+						      <th scope="col">Ciudad</th>
 						    </tr>
                                 </thead>
                                 <tbody>
@@ -51,7 +52,7 @@
     <script>
         geocod();
         function geocod(){
-             axios.get('http://localhost:8080/TransporteCarga/Acme/Clients', 
+             axios.get('http://localhost:8080/TransporteCarga/Acme/Zone', 
             { 
             }).then(function (response) {
                     // Log full response
@@ -63,7 +64,7 @@
             for(var i=0; i<addressComponents.length; i++){
                 
                  addressComponentsOutput += `
-                <li class="list-group-item"><strong>${response.data[i].identificacion}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].nombre}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].telefono}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].correo}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].zona}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].calleP}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].calleS}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].lote}</strong></li>`;  
+                <li class="list-group-item"><strong>${response.data[i].codigo}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].nombre}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].ciudad}</strong></li>`;  
             }
              document.getElementById('respuesta').innerHTML=addressComponentsOutput;
                         
