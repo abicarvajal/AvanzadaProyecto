@@ -40,7 +40,6 @@
                         <table class="table table-striped" id="tabla">
                                 <thead>
                                   <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">Fecha</th>
                                     <th scope="col">Cedula Cliente</th>
                                     <th scope="col">Cedula Transportista</th>
@@ -56,6 +55,7 @@
                                     
                                 </tbody>
                               </table>
+                     <div class="card-block" id="respuesta"></div>
                 </div>
             </div>
         </div>
@@ -82,7 +82,15 @@
             // Log full response
             console.log(response);
     
-            
+            var addressComponentsOutput = '<ul class="list-group">';
+                    var addressComponents = response.data;
+
+                    for (var i = 0; i < addressComponents.length; i++) {
+
+                        addressComponentsOutput += `
+                    <li class="list-group-item"><strong>${response.data[i].fecha}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].cedulaCliente}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].cedulaTransportista}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].codigoProducto}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].valorEnvio}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].destino}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].direccion}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].estadoReserva}</strong></li>`;
+                    }
+                    document.getElementById('respuesta').innerHTML = addressComponentsOutput;
             
             
           })
