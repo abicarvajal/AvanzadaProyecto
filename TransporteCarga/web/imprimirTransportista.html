@@ -67,7 +67,7 @@
             for(var i=0; i<addressComponents.length; i++){
                 
                  addressComponentsOutput += `
-                <li class="list-group-item"><strong>${response.data[i].identificacion}</strong>&nbsp;&nbsp;&nbsp<strong>${response.data[i].nombre}</strong>&nbsp;&nbsp;&nbsp;<strong>${response.data[i].direccion}</strong>&nbsp;&nbsp;&nbsp;<strong>${response.data[i].telefono}</strong>&nbsp;&nbsp;&nbsp;<strong>${response.data[i].correo}</strong>&nbsp;&nbsp;&nbsp;<strong>${response.data[i].placa}</strong>&nbsp;&nbsp;&nbsp;<strong>${response.data[i].zona}</strong></li>`;  
+                <li class="list-group-item"><strong>${response.data[i].identificacion}</strong>&nbsp;<strong>${response.data[i].nombre}</strong>&nbsp;<strong>${response.data[i].direccion}</strong>&nbsp;&nbsp;&nbsp;<strong>${response.data[i].telefono}</strong>&nbsp;<strong>${response.data[i].correo}</strong>&nbsp;<strong>${response.data[i].placa}</strong>&nbsp;<strong>${response.data[i].zona}</strong></li>`;  
             }
              document.getElementById('respuesta').innerHTML=addressComponentsOutput;
                         
