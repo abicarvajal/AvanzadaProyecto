@@ -166,19 +166,17 @@
                 correo:correo,
                 ciudad:ciudad,
                 zona:zona,
-                callep:callep,
-                calles:calles,
+                calleP:callep,
+                calleS:calles,
                 lote:lote
                 
             })
                 .then(function (response) {
                     // Log full response
                     console.log(response);
-                    if(response==204){
+                   
                         alert("Cliente Modificado");
-                    }else{
-                        alert("Cliente No encontrado");
-                    }
+                    
                     // Formatted Address              
                 })
                 .catch(function (error) {
