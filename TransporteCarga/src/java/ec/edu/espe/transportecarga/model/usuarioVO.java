@@ -47,6 +47,8 @@ public class usuarioVO {
         this.tipo = tipo;
     }
 
+    
+
     @Override
     public String toString() {
         return "usuarioVO{" + "usuario=" + usuario + ", password=" + password + ", tipo=" + tipo + '}';

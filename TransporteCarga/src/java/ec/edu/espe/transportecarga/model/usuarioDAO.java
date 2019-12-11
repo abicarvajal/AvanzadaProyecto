@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 /**
@@ -101,11 +102,12 @@ public class usuarioDAO {
     }
 
     public ArrayList<usuarioVO> mostrarTipoUsuario(String login, String pass) {
+        
         ArrayList<usuarioVO> listaB = new ArrayList<usuarioVO>();
         usuarioVO usuario;
         try {
             Connection acceso = con.obtenerConexion();
-            PreparedStatement ps = acceso.prepareStatement("select * from usuario where usuarios ='"+login+"' AND password= '"+pass+"' limit 1;");
+            PreparedStatement ps = acceso.prepareStatement("select * from usuario where usuarios ='" + login + "' AND password= '" + pass + "' limit 1;");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 usuario = new usuarioVO();
@@ -117,6 +119,25 @@ public class usuarioDAO {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        usuarioVO usuarioAUX = new usuarioVO();
+        usuarioVO e;
+        Iterator<usuarioVO> i = listaB.iterator();
+        int validar = 0;
+        while (i.hasNext()) {
+            e = i.next();
+            if ((e.getUsuario().equals(login)) && (e.getPassword().equals(pass))) {
+                validar = 1;
+                System.out.println("e.getUsuario():"+e.getUsuario() + "login: "+login+ "\ne.getPassword():"+e.getPassword()+ "pass: "+pass);
+                System.out.println(e.getUsuario().equals(login) +"\n"+e.getPassword().equals(pass));
+                System.out.println("Entramos dato correcto");
+            }
+
+        }
+        if (validar == 0) {
+            listaB.clear();
+            listaB.add(usuarioAUX);
+        }
+
         return listaB;
     }
 
