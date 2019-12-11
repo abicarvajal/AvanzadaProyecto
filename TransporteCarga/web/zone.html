@@ -1,116 +1,181 @@
 <html>
 
-<head>
-    <title>Registro Zona</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <head>
+        <title>Registro Zona</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <!-- Los iconos tipo Solid de Fontawesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <!-- Los iconos tipo Solid de Fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
-    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <!-- Nuestro css-->
+        <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
 
-</head>
 
-<body>
-    <div class="modal-dialog text-center">
-        <div class="col-sm-8 main-section">
-            <div class="modal-content">
-                <div class="col-12 user-img">
-                    <img src="static/img/zona.png" th:src="@{/img/zona.png}" /><br>
-                    <label id="heading">CARGA PESADA ACME</label>
-                    <label id="heading2">Registro de Zona</label>
-                </div>
-                <form class="col-12" id="form_datos" th:action="@{/zones}" method="get">
-                    <div class="form-group" id="codigoZ-group">
-                        <label for="codigoZ">Codigo Zona:</label>
-                        <input type="text" class="form-control" placeholder="PR761" name="codigoZ" id="codigoZ" />
+    </head>
+
+    <body>
+        <div class="modal-dialog text-center">
+            <div class="col-sm-8 main-section">
+                <div class="modal-content">
+                    <div class="col-12 user-img">
+                        <img src="static/img/zona.png" th:src="@{/img/zona.png}" /><br>
+                        <label id="heading">CARGA PESADA ACME</label>
+                        <label id="heading2">Registro de Zona</label>
                     </div>
-                    <div class="form-group" id="ciudad-group">
-                        <label for="ciudadZ">Nombre de la Ciudad:</label>
-                        <select size="5" class="form-control" name="ciudadZ" id="ciudadZ">
-                            <option value="0" selected="" disabled="">--Seleccionar--</option>
-                            <option value="Guayaquil"> GUAYQUIL</option>
-                            <option value="Cuenca"> CUENCA</option>
-                            <option value="Santo Domingo"> SANTO DOMINGO</option>
-                            <option value="Machala"> MACHALA</option>
-                            <option value="Durán"> DURÁN</option>
-                            <option value="Manta"> MANTA</option>
-                            <option value="Portoviejo"> PORTOVIEJO</option>
-                            <option value="Loja"> LOJA</option>
-                            <option value="Ambato"> AMBATO</option>
-                            <option value="Esmeraldas"> ESMERALDAS</option>
-                            <option value="Quevedo"> QUEVEDO</option>
-                            <option value="Riobamba"> RIOBAMBA</option>
-                            <option value="Milagro"> MILAGRO</option>
-                            <option value="Ibarra"> IBARRA</option>
-                            <option value="La Libertad"> LA LIBERTAD</option>
-                            <option value="Babahoyo"> BABAHOYO</option>
-                            <option value="Sangolquí"> SANGOLQUÍ</option>
-                            <option value="Daule"> DAULE</option>
-                            <option value="Latacunga"> LATACUNGA</option>
-                        </select>
-                        <div class="form-group" id="nombreZ-group">
-                            <label for="nombreZ">Nombre de la Zona:</label>
-                            <input type="text" class="form-control" placeholder="Valle de los Chillos" name="nombreZ"
-                                id="nombreZ" required="true" />
+                    <form class="col-12" id="form_datos" th:action="@{/zones}" method="get">
+                        <div class="form-group" id="codigoZ-group">
+                            <label for="codigoZ">Codigo Zona:</label>
+                            <input type="text" class="form-control" placeholder="PR761" name="codigoZ" id="codigoZ" />
                         </div>
+                        <div class="form-group" id="ciudad-group">
+                            <label for="ciudadZ">Nombre de la Ciudad:</label>
+                            <select size="5" class="form-control" name="ciudadZ" id="ciudadZ">
+                                <option value="0" selected="" disabled="">--Seleccionar--</option>
+                                <option value="Guayaquil"> GUAYQUIL</option>
+                                <option value="Cuenca"> CUENCA</option>
+                                <option value="Santo Domingo"> SANTO DOMINGO</option>
+                                <option value="Machala"> MACHALA</option>
+                                <option value="Durán"> DURÁN</option>
+                                <option value="Manta"> MANTA</option>
+                                <option value="Portoviejo"> PORTOVIEJO</option>
+                                <option value="Loja"> LOJA</option>
+                                <option value="Ambato"> AMBATO</option>
+                                <option value="Esmeraldas"> ESMERALDAS</option>
+                                <option value="Quevedo"> QUEVEDO</option>
+                                <option value="Riobamba"> RIOBAMBA</option>
+                                <option value="Milagro"> MILAGRO</option>
+                                <option value="Ibarra"> IBARRA</option>
+                                <option value="La Libertad"> LA LIBERTAD</option>
+                                <option value="Babahoyo"> BABAHOYO</option>
+                                <option value="Sangolquí"> SANGOLQUÍ</option>
+                                <option value="Daule"> DAULE</option>
+                                <option value="Latacunga"> LATACUNGA</option>
+                            </select>
+                            <div class="form-group" id="nombreZ-group">
+                                <label for="nombreZ">Nombre de la Zona:</label>
+                                <input type="text" class="form-control" placeholder="Valle de los Chillos" name="nombreZ"
+                                       id="nombreZ" required="true" />
+                            </div>
 
-                    </div><br>
+                        </div><br>
 
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Registrar </button>
-                </form>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Registrar </button>
+                    </form>
+
+                    <div class="card-block" id="formatted-address"></div>
+                    <div class="card-block" id="address-components"></div>
+                    <div class="card-block" id="geometry"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <script>
-        var locationForm = document.getElementById('form_datos');
 
-        // Listen for submiot
-        locationForm.addEventListener('submit', geocode);
+        <script>
+
+            var locationForm = document.getElementById('form_datos');
+
+            // Listen for submiot
+            locationForm.addEventListener('submit', geocode);
+
+            locationForm.addEventListener('submit', geocode1);
+            function geocode(e) {
+                // Prevent actual submit
+                e.preventDefault();
+
+                var codigoZ = document.getElementById('codigoZ').value;
+                var ciudadZ = document.getElementById('ciudadZ').value;
+                var nombreZ = document.getElementById('nombreZ').value;
 
 
-        function geocode(e) {
-            // Prevent actual submit
-            e.preventDefault();
+                axios.post('http://localhost:8080/TransporteCarga/Acme/Zone/createZone',
+                        {
+                            ciudad: ciudadZ,
+                            codigo: codigoZ,
+                            nombre: nombreZ
 
-            var codigoZ = document.getElementById('codigoZ').value;
-            var ciudadZ = document.getElementById('ciudadZ').value;
-            var nombreZ = document.getElementById('nombreZ').value;
+                        })
+                        .then(function (response) {
+                            // Log full response
+                            console.log(response);
+                            // Formatted Address                
+                            alert("dato Registrado");
 
-            
-            axios.post('http://localhost:8080/TransporteCarga/Acme/Zone/createZone', 
-            {
-                ciudad: ciudadZ,
-                codigo: codigoZ,
-                nombre: nombreZ
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
 
-            })
-                .then(function (response) {
-                    // Log full response
-                    console.log(response);
-                    // Formatted Address                
-                    alert("dato Registrado");
+            }
+            function geocode1(e) {
+                // Prevent actual submit
+                e.preventDefault();
 
+                var location = document.getElementById('ciudadZ').value;
+
+                axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+                    params: {
+                        address: location,
+                        key: 'AIzaSyA2foSh3ct_AeOVm5e9UVYKp9iyBJEU2p0'
+                    }
                 })
-                .catch(function (error) {
-                    console.log(error);
-                });
+                        .then(function (response) {
+                            // Log full response
+                            console.log(response);
 
-        }
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="validacion.js"></script>
-</body>
+                            // Formatted Address
+                            var formattedAddress = response.data.results[0].formatted_address;
+                            console.log('formattedAddress: ' + formattedAddress);
+                            var formattedAddressOutput = `
+              <ul class="list-group">
+                <li class="list-group-item">${formattedAddress}</li>
+              </ul>
+            `;
+                            console.log(formattedAddressOutput);
+                            // Address Components
+                            var addressComponents = response.data.results[0].address_components;
+                            console.log(addressComponents);
+                            var addressComponentsOutput = '<ul class="list-group">';
+                            console.log(addressComponentsOutput);
+                            for (var i = 0; i < addressComponents.length; i++) {
+                                addressComponentsOutput += `
+                <li class="list-group-item"><strong>${addressComponents[i].types[0]}</strong>: ${addressComponents[i].long_name}</li>
+              `;
+                            }
+                            addressComponentsOutput += '</ul>';
+
+                            // Geometry
+                            var lat = response.data.results[0].geometry.location.lat;
+                            console.log(response.data.results[0].geometry.location.lat);
+                            var lng = response.data.results[0].geometry.location.lng;
+                            console.log(response.data.results[0].geometry.location.lng);
+                            var geometryOutput = `
+              <ul class="list-group">
+                <li class="list-group-item"><strong>Latitude</strong>: ${lat}</li>
+                <li class="list-group-item"><strong>Longitude</strong>: ${lng}</li>
+              </ul>
+            `;
+                            console.log(geometryOutput);
+                            // Output to app
+                            document.getElementById('formatted-address').innerHTML = formattedAddressOutput;
+                            document.getElementById('address-components').innerHTML = addressComponentsOutput;
+                            document.getElementById('geometry').innerHTML = geometryOutput;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+            }
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="validacion.js"></script>
+    </body>
 
 </html>
