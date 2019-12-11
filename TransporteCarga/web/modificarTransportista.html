@@ -33,19 +33,20 @@
                         <table class="table table-striped">
                                 <thead>
                                   <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nombre</th>
                                     <th scope="col">Cedula</th>
+                                    <th scope="col">Nombre</th>
                                     <th scope="col">Direccion</th>
                                     <th scope="col">Telefono</th>
                                     <th scope="col">Correo</th>
                                     <th scope="col">Placa</th>
+                                    <th scope="col">Zona</th>
 						    </tr>
                                 </thead>
                                 <tbody>
                                     
                                 </tbody>
                               </table>
+                    <div class="card-block" id="respuesta"></div>
                               <br>
                               <br>
                               <br>
@@ -97,6 +98,34 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        geocod();
+        function geocod(){
+             axios.get('http://localhost:8080/TransporteCarga/Acme/Carriers', 
+            { 
+            }).then(function (response) {
+                    // Log full response
+                    console.log(response);
+                    
+            var addressComponentsOutput = '<ul class="list-group">';      
+            var addressComponents = response.data;
+            
+            for(var i=0; i<addressComponents.length; i++){
+                
+                 addressComponentsOutput += `
+                <li class="list-group-item"><strong>${response.data[i].identificacion}</strong>&nbsp;<strong>${response.data[i].nombre}</strong>&nbsp;<strong>${response.data[i].direccion}</strong>&nbsp;&nbsp;&nbsp;<strong>${response.data[i].telefono}</strong>&nbsp;<strong>${response.data[i].correo}</strong>&nbsp;<strong>${response.data[i].placa}</strong>&nbsp;<strong>${response.data[i].zona}</strong></li>`;  
+            }
+             document.getElementById('respuesta').innerHTML=addressComponentsOutput;
+                        
+                    // Formatted Address              
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+     </script>
+     
        <script>
         var locationForm = document.getElementById('registration');
 
