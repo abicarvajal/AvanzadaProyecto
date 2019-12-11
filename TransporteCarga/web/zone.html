@@ -86,9 +86,7 @@
             var ciudadZ = document.getElementById('ciudadZ').value;
             var nombreZ = document.getElementById('nombreZ').value;
 
-            console.log("codigoZ: " + codigoZ);
-            console.log("ciudadZ: " + ciudadZ);
-            console.log("nombreZ: " + nombreZ);
+            
             axios.post('http://localhost:8080/TransporteCarga/Acme/Zone/createZone', 
             {
                 ciudad: ciudadZ,
