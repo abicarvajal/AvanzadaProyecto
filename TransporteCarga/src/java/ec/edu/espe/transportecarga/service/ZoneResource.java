@@ -53,15 +53,12 @@ public class ZoneResource {
         return guiaVO;
     }
 
-    @GET
-    @Path("zones")
-    @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<zonaVO> getJsonZones() {
-        //TODO return proper representation object
-        zonaDAO zona = new zonaDAO();
-        ArrayList<zonaVO> zonaVO = new ArrayList<zonaVO>();
-        zonaVO = zona.mostrarZonas();
-        return zonaVO;
+    @PUT
+    @Path("updateZone")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void update(zonaVO data) {
+        zonaDAO response = new zonaDAO();        
+        response.modificarZonaIdentificacion(data);
     }
 
     @POST

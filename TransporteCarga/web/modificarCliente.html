@@ -15,8 +15,10 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+    
 </head>
 
 <body>
@@ -32,7 +34,7 @@
                         <table class="table table-striped">
                                 <thead>
                                   <tr>
-								      <th scope="col">#</th>
+								      
 								      <th scope="col">Cedula</th>
 								      <th scope="col">Nombre</th>
 								      <th scope="col">Celular</th>
@@ -43,80 +45,154 @@
 								      <th scope="col">Lote</th>
 						    </tr>
                                 </thead>
-                                <tbody>
-                                    
-                                </tbody>
+                                
+                                </div>
                               </table>
+                    <div class="card-block" id="respuesta"></div>
                               <br>
                               <br>
                               <br>
 
                 
-                    <form id="registration">
+                    <form id="registration" name="registration">
                   
-						 <div class="form-group" id="user-group">
-                            <label for="zona">Cedula:</label>
-                            <select class="form-control" name="zona">
-                                <option value="0" selected="" disabled="">--Seleccionar--</option>
-                            </select>
-                        </div><br>
-
-
-
-                            <input type="text" class="form-control" placeholder="1720980067" name="cedula" />
+			<div class="form-group" id="user-group">
+                            <label for="cedula">Cedula:</label>
+                            <input type="text" class="form-control" placeholder="1720980067" name="cedula" id="cedula" />
                         </div>
                         <div class="form-group" id="nombre-group">
-                            <label for="cedula">Nombre:</label>
-                            <input type="nombre" class="form-control" placeholder="María" name="nombre" />
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" class="form-control" placeholder="María" name="nombre" id="nombre"/>
                         </div>
                         <div class="form-group" id="telefono-group">
-                            <label for="cedula">Teléfono:</label>
-                            <input type="telefono" class="form-control" placeholder="0984927548" name="telefono" />
+                            <label for="telefono">Teléfono:</label>
+                            <input type="text" class="form-control" placeholder="0984927548" name="telefono" id="telefono" />
                         </div>
                         <div class="form-group" id="correo-group">
                             <label for="correo">Correo:</label>
-                            <input type="correo" class="form-control" placeholder="agcarvajal@espe.edu.ec"
-                                name="correo" />
+                            <input type="text" class="form-control" placeholder="agcarvajal@espe.edu.ec"
+                                name="correo" id="correo"/>
                         </div>
-                        <div class="form-group" id="ciudad-group">
-                            <label for="ciudad">Ciudad:</label>
-                            <input type="ciudad" class="form-control" placeholder="Quito" name="ciudad" />
-                        </div><br>
                         <div class="form-group" id="zona-group">
                             <label for="zona">Zona:</label>
-                            <select class="form-control" name="zona">
+                            <input type="text" class="form-control" placeholder="Quito" name="zona" id="zona" />
+                        </div><br>
+                        <div class="form-group" id="ciudad-group">
+                            <label for="ciudad">Ciudad</label>
+                            <select class="form-control" name="ciudad" id="ciudad">
                                 <option value="0" selected="" disabled="">--Seleccionar--</option>
-                                <option value="Guayaquil"> GUAYQUIL</option>
+                                <option value="Guayaquil"> GUAYAQUIL</option>
                                 <option value="Cuenca"> CUENCA</option>
                                 <option value="Santo Domingo"> SANTO DOMINGO</option>
                             </select>
                         </div><br>
 
                         <div class="form-group" id="callep-group">
-                            <label for="cedula">Calle Principal:</label>
-                            <input type="callep" class="form-control" placeholder="Calle Principal" name="callep" />
+                            <label for="callep">Calle Principal:</label>
+                            <input type="text" class="form-control" placeholder="Calle Principal" name="callep" id="callep"/>
                         </div>
                         <div class="form-group" id="calles-group">
-                            <label for="cedula">Calle Secundaria:</label>
-                            <input type="calles" class="form-control" placeholder="Calle Secundaria" name="calles" />
+                            <label for="calles">Calle Secundaria:</label>
+                            <input type="text" class="form-control" placeholder="Calle Secundaria" name="calles" id="calles" />
                         </div>
                         <div class="form-group" id="lote-group">
-                            <label for="cedula">Lote:</label>
-                            <input type="lote" class="form-control" placeholder="Lote" name="lote" />
+                            <label for="lote">Lote:</label>
+                            <input type="text" class="form-control" placeholder="Lote" name="lote" id="lote" />
                         </div>
 
                         <button type="submit" class="btn btn-primary">Modificar</button>
+                        
                     </form>
-
-
                 </div>
             </div>
         </div>
     </div>
+    <script src="validacionClient.js"></script>
+    <script>
+        geocod();
+        function geocod(){
+             axios.get('http://localhost:8080/TransporteCarga/Acme/Clients', 
+            { 
+            }).then(function (response) {
+                    // Log full response
+                    console.log(response);
+                    
+            var addressComponentsOutput = '<ul class="list-group">';      
+            var addressComponents = response.data;
+            
+            for(var i=0; i<addressComponents.length; i++){
+                
+                 addressComponentsOutput += `
+                <li class="list-group-item"><strong>${response.data[i].identificacion}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].nombre}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].telefono}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].correo}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].zona}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].calleP}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].calleS}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].lote}</strong></li>`;  
+            }
+             document.getElementById('respuesta').innerHTML=addressComponentsOutput;
+                        
+                    // Formatted Address              
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+     </script>
+    <script>
+       
+        
+        var locationForm = document.getElementById('registration');
+
+        // Listen for submiot
+        locationForm.addEventListener('submit', geocode);
+
+
+        function geocode(e) {
+            // Prevent actual submit
+            e.preventDefault();
+
+            var cedula = document.getElementById('cedula').value;
+            var nombre = document.getElementById('nombre').value;
+            var telefono = document.getElementById('telefono').value;
+            var correo = document.getElementById('correo').value;
+            var ciudad = document.getElementById('ciudad').value;
+            var zona = document.getElementById('zona').value;
+            var callep = document.getElementById('callep').value;
+            var calles = document.getElementById('calles').value;
+            var lote = document.getElementById('lote').value;
+      
+
+            axios.put('http://localhost:8080/TransporteCarga/Acme/Clients/updateClient', 
+            {
+                identificacion: cedula,
+                nombre: nombre,
+                telefono: telefono,
+                correo:correo,
+                ciudad:ciudad,
+                zona:zona,
+                callep:callep,
+                calles:calles,
+                lote:lote
+                
+            })
+                .then(function (response) {
+                    // Log full response
+                    console.log(response);
+                    if(response==204){
+                        alert("Cliente Modificado");
+                    }else{
+                        alert("Cliente No encontrado");
+                    }
+                    // Formatted Address              
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="validacionGuide.js"></script>
+    <script src="validacionClient.js"></script>
+    
+    
 </body>
 
 </html>

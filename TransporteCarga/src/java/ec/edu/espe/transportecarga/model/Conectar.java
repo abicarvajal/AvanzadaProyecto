@@ -43,7 +43,6 @@ public class Conectar {
         Conectar c = new Conectar();
         c.getConexion();
         
-        
     }
     
 }

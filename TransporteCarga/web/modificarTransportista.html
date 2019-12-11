@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- Nuestro css-->
@@ -52,42 +53,42 @@
 
 
                     <form id="registration">
-                        <div class="form-group" id="user-group">
-
+              
                          <div class="form-group" id="user-group">
-                            <label for="zona">Cedula:</label>
-                            <select class="form-control" name="zona">
-                                <option value="0" selected="" disabled="">--Seleccionar--</option>
-                            </select>
-                        </div><br>
+                            <label for="cedula">Cedula:</label>
+                            <input type="text" class="form-control" placeholder="1312926882" name="cedula" id="cedula" />
+                        </div>
 
                         <div class="form-group" id="nombre-group">
                             <label for="cedula">Nombre:</label>
-                            <input type="nombre" class="form-control" placeholder="María" name="nombre" />
+                            <input type="text" class="form-control" placeholder="María" name="nombre" id="nombre"/>
                         </div>
 
 
                         <div class="form-group" id="direccion-group">
                             <label for="direccion">Direccion:</label>
-                            <input type="direccion" class="form-control" placeholder="Valle de los Chillos" name="direccion" />
-                        </div><br>
+                            <input type="text" class="form-control" placeholder="Valle de los Chillos" name="direccion" id="direccion"/>
+                        </div>
 
                         <div class="form-group" id="telefono-group">
                             <label for="cedula">Teléfono:</label>
-                            <input type="telefono" class="form-control" placeholder="0984927548" name="telefono" />
+                            <input type="text" class="form-control" placeholder="0984927548" name="telefono" id="telefono"/>
                         </div>
 
                         <div class="form-group" id="correo-group">
                             <label for="correo">Correo:</label>
-                            <input type="correo" class="form-control" placeholder="agcarvajal@espe.edu.ec"
-                                name="correo" />
+                            <input type="text" class="form-control" placeholder="agcarvajal@espe.edu.ec" name="correo" id="correo"/>
                         </div>
 
                         <div class="form-group" id="placa-group">
-                            <label for="placa">Placa:</label>
-                            <input type="placa" class="form-control" placeholder="PKO0140'" name="placa" />
+                            <label for="placa">Placa</label>
+                            <input type="text" class="form-control" placeholder="PKO0140" name="placa"  id="placa" />
                         </div>
 
+                        <div class="form-group" id="zona-group">
+                            <label for="zona">Zona</label>
+                            <input type="text" class="form-control" placeholder="Rumiñahui" name="zona"  id="zona" />
+                        </div>
                         <button type="submit" class="btn btn-primary">Modificar</button>
                     </form>
 
@@ -96,10 +97,56 @@
             </div>
         </div>
     </div>
+       <script>
+        var locationForm = document.getElementById('registration');
+
+        // Listen for submiot
+        locationForm.addEventListener('submit', geocode);
+
+
+        function geocode(e) {
+            // Prevent actual submit
+            e.preventDefault();
+
+            var cedula = document.getElementById('cedula').value;
+            var nombre = document.getElementById('nombre').value;
+            var telefono = document.getElementById('telefono').value;
+            var correo = document.getElementById('correo').value;
+            var placa = document.getElementById('placa').value;
+            var zona = document.getElementById('zona').value;
+            var direccion = document.getElementById('direccion').value;
+      
+
+            axios.put('http://localhost:8080/TransporteCarga/Acme/Carriers/updateCarrier', 
+            {  identificacion: cedula,
+                nombre: nombre,
+                direccion: direccion,
+                telefono: telefono,
+                correo: correo,
+                placa: placa,
+                zona: zona
+            })
+                .then(function (response) {
+                    // Log full response
+                    console.log(response);
+                    if(response==204){
+                        alert("Transportista Modificado");
+                    }else{
+                        alert("Transportista Modificado");
+                    }
+                    // Formatted Address              
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+        }
+    </script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="validacionGuide.js"></script>
+    
 </body>
 
 </html>

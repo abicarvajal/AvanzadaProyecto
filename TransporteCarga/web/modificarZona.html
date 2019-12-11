@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
 </head>
@@ -47,23 +48,19 @@
                               <br>
                               <br>
 
-
-
-
-                <form class="col-12" id="form_datos" th:action="@{/zones}" method="get">
+                <form id="registration" name="registration">
 
                     <div class="form-group" id="user-group">
                             <label for="zona">Codigo Zona:</label>
-                            <select class="form-control" name="zona">
-                                <option value="0" selected="" disabled="">--Seleccionar--</option>
-                            </select>
-                        </div><br>
+                            <input type="text" class="form-control" placeholder="Z282" name="codigo" id="codigo" />
+                        </div>
 
                     <div class="form-group" id="ciudad-group">
                         <label for="ciudadZ">Nombre de la Ciudad:</label>
-                        <select size="5" class="form-control" name="ciudadZ">
+                        
+                        <select size="5" class="form-control" name="ciudadZ" id="ciudadZ">
                             <option value="0" selected="" disabled="">--Seleccionar--</option>
-                            <option value="Guayaquil"> GUAYQUIL</option>
+                            <option value="Guayaquil"> GUAYAQUIL</option>
                             <option value="Cuenca"> CUENCA</option>
                             <option value="Santo Domingo"> SANTO DOMINGO</option>
                             <option value="Machala"> MACHALA</option>
@@ -83,21 +80,53 @@
                             <option value="Daule"> DAULE</option>
                             <option value="Latacunga"> LATACUNGA</option>
                         </select>
+                         </div><br>
+                         
                         <div class="form-group" id="nombreZ-group">
                         <label for="nombreZ">Nombre de la Zona:</label>
-                        <input type="text" class="form-control" placeholder="Valle de los Chillos" name="nombreZ"
-                            id="nombreZ" required="true" />
-                    </div>
+                        <input type="text" class="form-control" placeholder="Valle de los Chillos" name="nombreZ" id="nombreZ" />
+                        </div>
 
-                    </div><br>
-
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Registrar </button>
+                    <button type="submit" class="btn btn-primary"> Modificar </button>
                 </form>
 
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        var locationForm = document.getElementById('registration');
+
+        // Listen for submiot
+        locationForm.addEventListener('submit', geocode);
+        function geocode(e) {
+            // Prevent actual submit
+            e.preventDefault();
+
+            var codigo = document.getElementById('codigo').value;
+            var ciudadZ = document.getElementById('ciudadZ').value;
+            var nombreZ = document.getElementById('nombreZ').value;
+            
+      
+
+            axios.put('http://localhost:8080/TransporteCarga/Acme/Zone/updateZone', 
+            {   ciudad: ciudadZ,
+                codigo: codigo,
+                nombre: nombreZ,
+             })
+                .then(function (response) {
+                    // Log full response
+                    console.log(response);
+                    
+                        alert("Zona Modificada")
+                    // Formatted Address              
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
