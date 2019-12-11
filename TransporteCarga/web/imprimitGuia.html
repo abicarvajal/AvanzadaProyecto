@@ -32,7 +32,6 @@
                         <table class="table table-striped" id="tabla">
                                 <thead>
                                   <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">Fecha</th>
                                     <th scope="col">Cedula Cliente</th>
                                     <th scope="col">Cedula Transportista</th>
@@ -48,10 +47,37 @@
                                     
                                 </tbody>
                               </table>
+                      <div class="card-block" id="respuesta"></div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        geocod();
+        function geocod(){
+             axios.get('http://localhost:8080/TransporteCarga/Acme/Clients', 
+            { 
+            }).then(function (response) {
+                    // Log full response
+                    console.log(response);
+                    
+            var addressComponentsOutput = '<ul class="list-group">';      
+            var addressComponents = response.data;
+            
+            for(var i=0; i<addressComponents.length; i++){
+                
+                 addressComponentsOutput += `
+                <li class="list-group-item"><strong>${response.data[i].identificacion}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].nombre}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].telefono}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].correo}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].zona}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].calleP}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].calleS}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${response.data[i].lote}</strong></li>`;  
+            }
+             document.getElementById('respuesta').innerHTML=addressComponentsOutput;
+                        
+                    // Formatted Address              
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
