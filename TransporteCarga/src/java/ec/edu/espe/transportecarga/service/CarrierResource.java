@@ -99,12 +99,5 @@ public class CarrierResource {
     }
 
     
-    /**
-     * PUT method for updating or creating an instance of CarrierResource
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(transportistaVO content) {
-    }
+    
 }

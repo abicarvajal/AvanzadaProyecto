@@ -91,13 +91,4 @@ public class ZoneResource {
         System.out.println(byName);
     }
 
-    /**
-     * PUT method for updating or creating an instance of ZoneResource
-     *
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(zonaVO content) {
-    }
 }

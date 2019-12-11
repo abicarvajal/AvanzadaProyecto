@@ -141,12 +141,5 @@ public class GuideResource {
     }
    
    
-    /**
-     * PUT method for updating or creating an instance of GuideResource
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(guiaVO content) {
-    }
+    
 }
