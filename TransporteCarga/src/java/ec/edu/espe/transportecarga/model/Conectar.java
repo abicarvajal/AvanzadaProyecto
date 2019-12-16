@@ -8,9 +8,9 @@ import java.sql.SQLException;
 public class Conectar {
 
     static String us = "root";
-    static String pass = "";
+    static String pass = "Proyecto2019";
     static String bd = "proyecto";
-    static String url = "jdbc:mysql://localhost:3306/proyecto?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    static String url = "jdbc:mysql://proyecto.cxtbcy7v0lmi.us-east-1.rds.amazonaws.com:3306/proyecto?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     public Connection con = null;
     
     public Conectar(){

@@ -8,6 +8,8 @@ package controlador;
 import static java.lang.Math.random;
 import static java.lang.StrictMath.random;
 import java.util.Random;
+import modelo.Conectar;
+import modelo.Conexion;
 import vista.login;
 
 /**
@@ -22,9 +24,9 @@ public class main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        
-        login login=new  login();
-        login.setVisible(true);
+        Conexion con = new Conexion();
+        //login login=new  login();
+        //login.setVisible(true);
 
     }
     
