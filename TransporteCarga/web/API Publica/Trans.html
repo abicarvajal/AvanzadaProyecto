@@ -78,6 +78,7 @@
             locationForm.addEventListener('submit', geocode);
             function geocode(e) {
                 // Prevent actual submit
+               
                 e.preventDefault();
                 var nombre = document.getElementById('nombre').value;
                 var cedula = document.getElementById('cedula').value;
