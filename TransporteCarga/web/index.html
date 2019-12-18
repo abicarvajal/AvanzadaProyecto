@@ -79,22 +79,22 @@ and open the template in the editor.
         console.log(password);
 
 
-        axios.get('http://54.84.157.231:8080/TransporteCarga1/Acme/Users/users/data/' +
+        axios.get('http://localhost:8080/TransporteCarga/Acme/Users/users/data/' +
                 login + '/' + password)
                 .then(function (response) {
                     // Log full response
-                    console.log("response: "+response );
+                    console.log(response);
                     tipoU = response.data[0].tipo;
                     console.log("tipo: " + tipoU);
                     // Formatted Address                
                     //alert("dato Registrado");
                     if (tipoU == 1) {
 
-                        window.location.replace('TransporteCarga/Administrador.html');
+                        window.location.replace('http://localhost:8080/TransporteCarga/Administrador.html');
                         alert("Admin Encontrado");
                     } else if (tipoU == 2) {
 
-                        window.location.replace('TransporteCarga/Logistica.html');
+                        window.location.replace('http://localhost:8080/TransporteCarga/Logistica.html');
                         alert("Usuario encontrado");
                     } else {
                         alert("Usuario no encontrado");
