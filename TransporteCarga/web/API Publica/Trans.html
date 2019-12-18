@@ -35,7 +35,7 @@
 
                                 <div class="form-group" id="nombre-group">
                                     <label for="cedula">Nombre:</label>
-                                    <input type="nombre" class="form-control" placeholder="María" name="nombre" id ="nombre"/>
+                                    <input type="number" class="form-control" placeholder="María" name="nombre" id ="nombre"/>
                                 </div>
 
                                 <label for="cedula">Cédula:</label>
@@ -44,23 +44,23 @@
 
                             <div class="form-group" id="direccion-group">
                                 <label for="direccion">Dirección:</label>
-                                <input type="direccion" class="form-control" placeholder="Valle de los Chillos" name="direccion" id="direccion" />
+                                <input type="text" class="form-control" placeholder="Valle de los Chillos" name="direccion" id="direccion" />
                             </div><br>
 
                             <div class="form-group" id="telefono-group">
                                 <label for="cedula">Teléfono:</label>
-                                <input type="telefono" class="form-control" placeholder="0984927548" name="telefono" id="telefono"/>
+                                <input type="number" class="form-control" placeholder="0984927548" name="telefono" id="telefono"/>
                             </div>
 
                             <div class="form-group" id="correo-group">
                                 <label for="correo">Correo:</label>
-                                <input type="correo" class="form-control" placeholder="agcarvajal@espe.edu.ec"
+                                <input type="text" class="form-control" placeholder="agcarvajal@espe.edu.ec"
                                        name="correo" id="correo"/>
                             </div>
 
                             <div class="form-group" id="placa-group">
                                 <label for="placa">Placa:</label>
-                                <input type="placa" class="form-control" placeholder="PKO0140'" name="placa" id="placa"/>
+                                <input type="text" class="form-control" placeholder="PKO0140'" name="placa" id="placa"/>
                             </div>
                             <div class="form-group" id="placa-group">
                                 <label for="zona">Zona:</label>
@@ -94,7 +94,7 @@
                 console.log(correo);
                 console.log(placa);
                 console.log(zona);
-                axios.post('http://54.84.157.231:8080/TransporteCarga/Acme/Carriers/createCarrier',
+                axios.post('http://18.234.68.189:8080/TransporteCarga/Acme/Carriers/createCarrier',
                         {
                             nombre: nombre,
                             identificacion: cedula,
