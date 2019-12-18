@@ -16,7 +16,7 @@ public class Conexion {
     String bd="proyecto";
     String login="root";
     String passw="Proyecto2019";
-    String url = "jdbc:mysql://proyecto.cxtbcy7v0lmi.us-east-1.rds.amazonaws.com:3306/proyecto?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    String url = "jdbc:mysql://proyecto.cxtbcy7v0lmi.us-east-1.rds.amazonaws.com:3306/proyecto?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
     
     Connection objConex=null;
     
